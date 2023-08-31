@@ -1,22 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
-  font-family: sans-serif;
-}
-
 body {
-  background: repeating-conic-gradient(#0000 0.000045%, #000d 0.0005%),
-    linear-gradient(rgb(0, 1, 29), transparent),
-    linear-gradient(to top left, rgb(29, 0, 1), transparent),
-    linear-gradient(to top right, rgb(1, 29, 0), transparent);
+  background: repeating-conic-gradient(#0000 0.0003%, #000d 0.0005%),
+    linear-gradient(rgb(0, 0, 40), transparent),
+    linear-gradient(to top left, rgb(40, 0, 0), transparent),
+    linear-gradient(to top right, rgb(0, 40, 0), transparent);
   background-blend-mode: overlay, screen, screen;
   background-attachment: fixed;
-  & > h1 {
-    font-size: 10vh;
-    font-family: serif;
-    text-align: center;
-    margin-top: calc(30vh - (5vh));
+  & > main {
+    min-height: 100vh;
+    & > header {
+      & > h1 {
+        font-size: calc(48px + 5vh);
+        font-family: serif;
+        text-align: center;
+        padding-top: calc(27.5vh - 24px);
+      }
+    }
+  }
+  & > footer {
+    background-color: #333333;
+    height: 100vh;
   }
 }
