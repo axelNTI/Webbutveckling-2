@@ -7,6 +7,7 @@ body {
   background-attachment: fixed;
   & > main {
     min-height: 100vh;
+    padding-bottom: 10vh;
     & > header {
       & > h1 {
         font-size: calc(48px + 5vh);
@@ -16,24 +17,41 @@ body {
       }
     }
     & > section {
+      padding-left: 5vw;
+      & > h2 {
+        font-size: calc(24px + 2.5vh);
+      }
       & > article {
         padding: 15px 0 0 0;
         width: fit-content;
         overflow: hidden;
-        & > a {
-          & > img {
-            &:hover {
+        display: flex;
+        flex-direction: row;
+        transition-duration: 500ms;
+        transition-timing-function: ease-in-out;
+        &:hover {
+          transform: translateY(-5px);
+          & > a {
+            & > img {
               transform: scale(1.05);
-              transition-duration: 1500ms;
             }
           }
         }
-        &:hover {
-          transition-duration: 500ms;
-          transform: translateY(-5px);
-          
+        & > a {
+          size: 100%;
+          & > img {
+            transition-duration: 500ms;
+            transition-timing-function: ease-in-out;
+            width: 250px;
+          }
+          & > h3 {
+            font-size: calc(12px + 1.25vh);
+            text-decoration: none;
+            position: absolute;
+            text-shadow: 2px 2px #000000;
+            bottom: 0;
+          }
         }
-        
       }
     }
   }
