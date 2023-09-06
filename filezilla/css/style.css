@@ -16,21 +16,22 @@ body {
         padding-top: calc(27.5vh - 24px);
       }
     }
+    & > h2 {
+      font-size: calc(24px + 2.5vh);
+      padding: 75px 0 25px calc(5vw + 15px);
+    }
     & > section {
       padding-left: 5vw;
-      & > h2 {
-        font-size: calc(24px + 2.5vh);
-      }
+      display: flex;
+      flex-direction: row;
       & > article {
-        padding: 15px 0 0 0;
+        padding: 15px;
         width: fit-content;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
         transition-duration: 500ms;
         transition-timing-function: ease-in-out;
+        overflow: hidden;
         &:hover {
-          transform: translateY(-5px);
+          /* transform: translateY(-5px); */
           & > a {
             & > img {
               transform: scale(1.05);
@@ -38,18 +39,18 @@ body {
           }
         }
         & > a {
-          size: 100%;
           & > img {
             transition-duration: 500ms;
             transition-timing-function: ease-in-out;
             width: 250px;
+            height: 250px;
+            object-fit: cover;
           }
           & > h3 {
-            font-size: calc(12px + 1.25vh);
+            font-size: calc(12px + 1vh);
             text-decoration: none;
             position: absolute;
             text-shadow: 2px 2px #000000;
-            bottom: 0;
           }
         }
       }
