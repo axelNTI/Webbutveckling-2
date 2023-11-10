@@ -15,7 +15,13 @@
     <h3>Kund</h3>
     <p>
       Fysikelver som lätt vill kunna nå den formeln som behövs för en viss
-      uppgift (Viggo).
+      uppgift (Viggo). Vår fysiska formelbok är väldigt användbar men om du inte
+      vet exakt vilken formel du ska använda behöver man söka igenom hela för
+      att hitta den. Dessutom kommer den göra uträkningarna för en redan färdig
+      formel. Denna hemsida kommer då inte ta bort från svårigheten från
+      uppgifter utan bara snabba på lösningen. Det är exakt denna situation jag
+      tänker mig att en eventuell kund skulle använda hemsidan. För att snabba
+      på det som annars skulle vara lätt men ta tid.
     </p>
     <h3>Betygsmål</h3>
     <p>Jag satsar på ett A för detta projekt.</p>
@@ -39,25 +45,73 @@
         inte har någon extra.
       </li>
       <li>
-        Om ingen formel matchar detta söker den igenom databasen igen för att
-        hitta om en
+        Om ingen formel matchar detta går den till en separat funktion som ska
+        söka igenom databasen igen för att kolla om det går att kombinera med en
+        annan formel.
       </li>
       <li>
-        Javascript som tar input och söker igenom en typ av databas för att
-        hitta formeln eller formlerna som passar med de sökta och kända
-        storheterna. Eventuellt även ställa om formlerna för att ge en färdig
-        formel.
+        Sedan tar den formel eller formlerna som krävs och skickar den till en
+        annan funktion som skickar tillbaka den korrekta varianten av formeln.
+      </li>
+      <li>
+        Denna output går sedan igenom en kort funktion som med storheternas
+        värde ger ett slutligt svar.
       </li>
     </ul>
     <h3>Annat</h3>
     <p>
-      Hemsidan kräver ett skript som jämför inputen från hemsidan och jämför den
-      med olika formler för att hitta den korrekta och kombinerar dem med
-      varandra om det behövs. Eventuellt kombinerar skriptet olika formler vid
-      behov. HTML-koden kommer vara relativt simpel då det enda som krävs från
-      den är några fält för formler samt ett input-område. Slutligen kommer
-      CSS-koden också vara simpel då jag inte planerar för att sidan ska vara
-      relativt simpel inom den visuella aspekten.
+      HTML-kod för formler:
+      <br />
+      För detta behöver jag bara lite strukturkod såsom en main-tag, några
+      section-taggar och några hn-taggar. Detta kommer vara extremt simpelt och
+      bara ta några minuter.
+      <br /><br />
+      HTML-kod för input:
+      <br />
+      Den behöver flera knappar för alla storheter som finns i formlerna. Detta
+      är jag inte säker på hur jag ska göra då jag inte gjort det tidigare.
+      Däremot tror jag att det kommer vara lätt.
+      <br /><br />
+      CSS-kod för hemsidan:
+      <br />
+      Hemsidan kommer visuellt vara relativt simpel, därför behövs väldigt lite
+      CSS, det mesta av det kommer gå till att altt är på rätt plats.
+      <br /><br />
+      Föra över formler till MathML-formatet:
+      <br />
+      Detta kommer ta en del tid men kommer inte vara svårt. Jag har redan
+      testat med några formler och det är simpelt.
+      <br /><br />
+      Javascript (Söka om en formel har svaret):
+      <br />
+      Detta är väldigt simpelt. Objektet som lagrar formlen kommer också ha alla
+      dess storheter. Därför är det väldigt simpelt. Det kommer kräva typ en
+      for-loop för att göra detta.
+      <br /><br />
+      Javascript (Kombinera formler):
+      <br />
+      Detta kommer vara lite mer komplicerat. Det gäller att begränsa möjliga
+      formler till de som har den sökta storheten och sedan rekursivt söka
+      igenom alla luckor som bildas för att se om det fungerar. Detta kommer
+      vara mer komplicerat och jag är inte helt säker på hur jag ska göra det.
+      Däremot är jag säker på att jag kan göra det.
+      <br /><br />
+      Javascript (Skriva om formel):
+      <br />
+      Detta är också simpelt. Jag kan tekniskt sätt automatisera detta genom att
+      skriva kod som kan ta vilken formel som helst och bryta ut vilken storhet
+      som helst ur formeln. Detta är fullt möjligt för mig att göra men skulle
+      ta en orimlig mängd tid och är därför inte möjligt. Därför kommer jag
+      utföra det med en alternativ metod. Jag kommer, för hand att skriva varje
+      variation av varje formel för att koden sedan enkelt ska ta den korrekt.
+      Detta är inte en lika bra lösning och kommer också ta en del tid men är
+      mycket mer rimligt än den första metoden.
+      <br /><br />
+      Javascript (Räkna ut värde):
+      <br />
+      Det finns redan en inbyggd metod i javascript som byter ut variabler i en
+      ekvation mot ett värde. Med denna kan jag simpelt räkna ut det slutgiltiga
+      värdet på den sökta storheten.
     </p>
     <h2>Tidsplanering</h2>
     <h3>Deadlines</h3>
