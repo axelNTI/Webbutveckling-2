@@ -94,8 +94,16 @@
       formler till de som har den sökta storheten och sedan rekursivt söka
       igenom alla luckor som bildas för att se om det fungerar. Detta kommer
       vara mer komplicerat och jag är inte helt säker på hur jag ska göra det.
-      Däremot är jag säker på att jag kan göra det.
-      <br /><br />
+      Däremot är jag säker på att jag kan göra det. Det svåra med detta ligger i
+      att sluta söka efter en viss punkt så att den inte fortsätter söka efter
+      en formel som inte finns. T.ex, säg att man söker efter "F", då skulle man
+      naturligt börja med F = ma. Om de kända storheterna är m, v, v<sub>0</sub>
+      och t kan man bryta ur "a" från v = v<sub>0</sub> + at och sätta i det i F
+      = ma får att få F = m(v - v<sub>0</sub>)t<sup>-1</sup>. Säg däremot att
+      "t" också är en okänd storhet. Det finns andra formler som innehåller "t"
+      men ingen som kan lösa problemet. Alla andra innehåller okända storheter.
+      som slutligen alltid kommer gå tillbaka till "a", den okända storheten som
+      först skulle hittas. Då kan du <br /><br />
       Javascript (Skriva om formel):
       <br />
       Detta är också simpelt. Jag kan tekniskt sätt automatisera detta genom att
