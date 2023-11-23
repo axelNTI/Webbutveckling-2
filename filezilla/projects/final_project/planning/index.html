@@ -39,6 +39,7 @@
       </li>
       <li>Skriva CSS-kod för att få hemsidan att se bra ut.</li>
       <li>Föra över relevanta formler till MathML-formatet.</li>
+      <li>Javascript för enhetsomvandlig.</li>
       <li>
         Javscript som tar input och söker igenom en databas (objekt) av formler
         för att hitta en som har de sökta/kända storheterna och som dessutom
@@ -68,9 +69,10 @@
       <br /><br />
       HTML-kod för input:
       <br />
-      Den behöver flera knappar för alla storheter som finns i formlerna. Detta
-      är jag inte säker på hur jag ska göra då jag inte gjort det tidigare.
-      Däremot tror jag att det kommer vara lätt.
+      Den behöver flera knappar för alla storheter som finns i formlerna samt
+      ett skrivfält för värdet på storheten samt en dropdown-list för enhet.
+      Detta är jag inte säker på hur jag ska göra då jag inte gjort det
+      tidigare. Däremot tror jag att det kommer vara lätt.
       <br /><br />
       CSS-kod för hemsidan:
       <br />
@@ -87,6 +89,11 @@
       Detta är väldigt simpelt. Objektet som lagrar formlen kommer också ha alla
       dess storheter. Därför är det väldigt simpelt. Det kommer kräva typ en
       for-loop för att göra detta.
+      <br /><br />
+      Javascript (Enhetsomvandlig):
+      <br />
+      Det här är bara att kolla vilken enhet som är inmatad och jämföra den med
+      ett objekt som bevarar förhållandet mellan det och SI-enheten.
       <br /><br />
       Javascript (Kombinera formler):
       <br />
@@ -107,12 +114,13 @@
       <br />
       Detta är också simpelt. Jag kan tekniskt sätt automatisera detta genom att
       skriva kod som kan ta vilken formel som helst och bryta ut vilken storhet
-      som helst ur formeln. Detta är fullt möjligt för mig att göra men skulle
-      ta en orimlig mängd tid och är därför inte möjligt. Därför kommer jag
-      utföra det med en alternativ metod. Jag kommer, för hand att skriva varje
-      variation av varje formel för att koden sedan enkelt ska ta den korrekt.
-      Detta är inte en lika bra lösning och kommer också ta en del tid men är
-      mycket mer rimligt än den första metoden.
+      som helst ur formeln. Detta är fullt möjligt för mig att göra men kräver
+      att den känner av vad den ska göra i flera hundra fall. Detta skulle ta en
+      orimlig mängd tid och är därför inte möjligt. Därför kommer jag utföra det
+      med en alternativ metod. Jag kommer, för hand att skriva varje variation
+      av varje formel för att koden sedan enkelt ska ta den korrekt. Detta är
+      inte en lika bra lösning och kommer också ta en del tid men är mycket mer
+      rimligt än den första metoden.
       <br /><br />
       Javascript (Räkna ut värde):
       <br />
@@ -124,7 +132,7 @@
     <h3>Deadlines</h3>
     <p>
       Vecka 47: Skriv färdigt planeringen, programmera en simpel variant av
-      hemsidan och skriva sök-funktionen.
+      hemsidan och skriva sök-funktionen samt enhetsomvandlings-funktionen.
       <br />
       Vecka 48: Skriv skriptet för att kombinera formler samt skriva om dem till
       det korrekta formatet. Skriva resterande HTML- och CSS-kod för att
