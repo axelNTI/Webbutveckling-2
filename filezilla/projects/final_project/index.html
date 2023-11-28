@@ -10,15 +10,25 @@
   <body>
     <h1>Formelbok</h1>
     <h2>Input</h2>
-    <form id="input">
-      s <input type="number" /><br />
-      v <input type="number" /> <br />
-      a <input type="number" /> <br />
-      t <input type="number" /> <br />
-      v<sub>0</sub><input type="number" /> <br />
-      m <input type="number" /> <br />
-      F <input type="number" /> <br />
-      <input id="clickMe" type="button" value="Submit" onclick="main();" />
+    <form>
+      Känt värde: <br />
+      s <input type="number" id="distance" /><br />
+      v <input type="number" id="currentVelocity" /> <br />
+      a <input type="number" id="acceleration" /> <br />
+      t <input type="number" id="time" /> <br />
+      v<sub>0</sub><input type="number" id="initialVelocity" /> <br />
+      m <input type="number" id="mass" /> <br />
+      F <input type="number" id="force" /> <br />
+      Sökt värde: <br />
+      s <input name="search" type="radio" value="distance" /><br />
+      v <input name="search" type="radio" value="currentVelocity" /> <br />
+      a <input name="search" type="radio" value="acceleration" /> <br />
+      t <input name="search" type="radio" value="time" /> <br />
+      v<sub>0</sub><input name="search" type="radio" value="initialVelocity" />
+      <br />
+      m <input name="search" type="radio" value="mass" /> <br />
+      F <input name="search" type="radio" value="force" /> <br />
+      <input id="clickMe" type="button" value="Calculate" onclick="main();" />
     </form>
     <h2>Mekanik</h2>
     <h3>Likformig rörelse</h3>
