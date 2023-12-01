@@ -1,3 +1,11 @@
+let variables_in_formulas = [
+  ["s", "v", "t"],
+  ["v", "v0", "a", "t"],
+  ["s", "v0", "t", "a"],
+  ["v", "v0", "a", "s"],
+  ["F", "m", "a"],
+];
+
 function main() {
   const distance = parseInt(document.querySelector("#distance").value);
   const currentVelocity = parseInt(
@@ -11,7 +19,27 @@ function main() {
   const mass = parseInt(document.querySelector("#mass").value);
   const force = parseInt(document.querySelector("#force").value);
   const search = document.querySelector("input[name=search]:checked").value;
-  console.log(search);
+  const usedVariables = [
+    distance,
+    currentVelocity,
+    acceleration,
+    time,
+    initialVelocity,
+    mass,
+    force,
+  ].filter((variable) => !isNaN(variable));
+  let a = false;
+  outer: for (let i of variables_in_formulas) {
+    for (let j of i) {
+      if (usedVariables.indexOf(j) == -1) {
+        continue outer;
+      }
+    }
+    a = true;
+  }
+  if (a) {
+    console.log('It can be solved')
+  }
 }
 
 function rewriteVariable(formula, searchedVariable) {
