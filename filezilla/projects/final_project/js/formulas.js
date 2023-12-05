@@ -6,6 +6,8 @@ let variables_in_formulas = [
   ["F", "m", "a"],
 ];
 
+let 
+
 function main() {
   const distance = parseInt(document.querySelector("#distance").value);
   const currentVelocity = parseInt(
@@ -29,17 +31,33 @@ function main() {
     force,
   ].filter((variable) => !isNaN(variable));
   let a = false;
+  let possible_formulas = []
+  for (let i of variables_in_formulas) {
+    if (i.indexOf(search) >= 0) {
+      possible_formulas.push(i)
+    }
+  }
+  console.log(possible_formulas)
   outer: for (let i of variables_in_formulas) {
+    console.log(i)
     for (let j of i) {
+      console.log(j)
+      console.log(usedVariables.indexOf(j));
       if (usedVariables.indexOf(j) == -1) {
         continue outer;
       }
     }
-    a = true;
+    if (i.indexOf(search) >= 0) {
+      a = true;
+    }
   }
   if (a) {
-    console.log('It can be solved')
+    console.log("It can be solved");
   }
+}
+
+function findVariable() {
+
 }
 
 function rewriteVariable(formula, searchedVariable) {
