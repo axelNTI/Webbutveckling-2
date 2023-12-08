@@ -43,6 +43,7 @@ function main() {
 }
 
 function findFormula(knownVariables, search, triedVariables) {
+  console.log("find");
   let possible_formulas = Object.values(variables_in_formulas).filter(
     (formula) =>
       formula.indexOf(search) != -1 &&
@@ -70,10 +71,8 @@ function findFormula(knownVariables, search, triedVariables) {
       i = rewriteFormula(i, search);
       let new_list = [];
       console.log("yep");
-      let new_formula = rewriteFormula(
-        findFormula(knownVariables, j, triedVariables),
-        j
-      );
+      let new_formula = findFormula(knownVariables, j, triedVariables);
+      console.log(new_formula);
       if (!new_formula) {
         return false;
       }
@@ -89,38 +88,57 @@ function findFormula(knownVariables, search, triedVariables) {
 }
 
 function rewriteFormula(formula, searchedVariable) {
+  console.log("rewrite");
+  console.log(formula);
+  console.log(searchedVariable);
   formula = Object.keys(variables_in_formulas).find(
     (k) => variables_in_formulas[k] === formula
   );
   if (formula == "s = v*t") {
     if (searchedVariable == "s") {
-      return ["s = v*t"];
+      return ["v*t"];
     } else if (searchedVariable == "v") {
-      return ["v = s/t"];
+      return ["s/t"];
     } else if (searchedVariable == "t") {
-      return ["t = s/v"];
+      return ["s/v"];
     }
   } else if (formula == "v = v0 + a*t") {
     if (searchedVariable == "v") {
-      return ["v = v0 + a*t"];
+      return ["v0 + a*t"];
     } else if (searchedVariable == "v0") {
-      return ["v0 = v - a*t"];
+      return ["v - a*t"];
     } else if (searchedVariable == "a") {
-      return ["a = (v - v0)/t"];
+      return ["(v - v0)/t"];
     } else if (searchedVariable == "t") {
-      return ["t = (v - v0)/a"];
+      return ["(v - v0)/a"];
     }
   } else if (formula == "s = v0*t + (a*t**2)/2") {
     if (searchedVariable == "s") {
-      return ["s = v0*t + (a*t**2)/2"];
+      return ["v0*t + (a*t**2)/2"];
     } else if (searchedVariable == "v0") {
-      return ["v0 = (s - (a*t**2)/2)/t"];
+      return ["(s - (a*t**2)/2)/t"];
     } else if (searchedVariable == "t") {
-      return ["t = ", "t = "];
+      return ["(-v0+(v0**2-2*a*s)**0.5)/a", "(-v0-(v0**2-2*a*s)**0.5)/a"];
+    } else if (searchedVariable == "a") {
+      return ["2*(s-v0*t)/t**2"];
+    }
+  } else if (formula == "v**2 - v0**2 = 2*a*s") {
+    if (searchedVariable == "v") {
+      return ["(2*a*s - v0**2)**0.5"];
+    } else if (searchedVariable == "v0") {
+      return ["(v**2 - 2*a*s)**0.5"];
+    } else if (searchedVariable == "a") {
+      return ["(v**2 - v0**2)/(2*s)"];
+    } else if (searchedVariable == "s") {
+      return ["(v**2 - v0**2)/(2*a)"];
     }
   } else if (formula == "F = m*a") {
     if (searchedVariable == "F") {
-      return ["F = m*a"];
+      return ["m*a"];
+    } else if (searchedVariable == "m") {
+      return ["F/a"];
+    } else if (searchedVariable == "a") {
+      return ["F/m"];
     }
   }
   return false;
