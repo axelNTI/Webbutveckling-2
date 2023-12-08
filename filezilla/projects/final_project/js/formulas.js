@@ -53,15 +53,11 @@ function findFormula(knownVariables, search, triedVariables) {
         continue outer;
       }
     }
-    return rewriteFormula(
-      Object.keys(variables_in_formulas).find(
-        (k) => variables_in_formulas[k] === formula
-      ),
-      search
-    );
+    return rewriteFormula(i, search);
   }
   triedVariables.push(search);
   outer: for (let i of possible_formulas) {
+    i = rewriteFormula;
     for (let j of i.filter(
       (x) => knownVariables.indexOf(x) == -1 && x != search
     )) {
@@ -70,7 +66,7 @@ function findFormula(knownVariables, search, triedVariables) {
       }
       let form = findFormula(knownVariables, j, triedVariables);
       if (form) {
-        return form;
+        return rewriteFormula(form, j);
       }
       return false;
     }
@@ -79,6 +75,9 @@ function findFormula(knownVariables, search, triedVariables) {
 }
 
 function rewriteFormula(formula, searchedVariable) {
+  formula = Object.keys(variables_in_formulas).find(
+    (k) => variables_in_formulas[k] === formula
+  );
   if (formula == "s = v*t") {
     if (searchedVariable == "s") {
       return ["s = v*t"];
