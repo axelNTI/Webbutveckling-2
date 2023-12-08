@@ -25,7 +25,7 @@ function main() {
   const mass = document.querySelector("#mass").value.length ? "m" : undefined;
   const force = document.querySelector("#force").value.length ? "F" : undefined;
   const search = document.querySelector("input[name=search]:checked").value;
-  const usedVariables = [
+  const knownVariables = [
     distance,
     currentVelocity,
     acceleration,
@@ -34,40 +34,48 @@ function main() {
     mass,
     force,
   ].filter(Boolean);
-  let formula = findFormula(usedVariables, search);
-  let key = Object.keys(variables_in_formulas).find(
-    (k) => variables_in_formulas[k] === formula
-  );
-  console.log(search)
-  let finalFormula = rewriteFormula(key, search);
-  console.log(finalFormula);
+  let formula = findFormula(knownVariables, search, []);
+  if (!formula) {
+    console.log("Ingen möjlig formel");
+  }
+  console.log(formula);
 }
 
-function findFormula(usedVariables, search) {
+function findFormula(knownVariables, search, triedVariables) {
   let possible_formulas = Object.values(variables_in_formulas).filter(
-    (formula) => formula.indexOf(search) != -1
+    (formula) =>
+      formula.indexOf(search) != -1 &&
+      triedVariables.every((x) => formula.indexOf(x) == -1)
   );
-  console.log(possible_formulas)
   outer: for (let i of possible_formulas) {
     for (let j of i) {
-      if (usedVariables.indexOf(j) == -1 && j != search) {
+      if (knownVariables.indexOf(j) == -1 && j != search) {
         continue outer;
       }
     }
-    return i;
+    return rewriteFormula(
+      Object.keys(variables_in_formulas).find(
+        (k) => variables_in_formulas[k] === formula
+      ),
+      search
+    );
   }
-  return RecursiveSearch(usedVariables, possible_formulas, search);
-}
-
-function RecursiveSearch(usedVariables, possible_formulas, search) {
-  console.log(usedVariables)
-  for (let i of possible_formulas) {
+  triedVariables.push(search);
+  outer: for (let i of possible_formulas) {
     for (let j of i.filter(
-      (x) => usedVariables.indexOf(x) == -1 && x != search
+      (x) => knownVariables.indexOf(x) == -1 && x != search
     )) {
-      return findFormula(usedVariables, j);
+      if (triedVariables.indexOf(j) != -1) {
+        continue outer;
+      }
+      let form = findFormula(knownVariables, j, triedVariables);
+      if (form) {
+        return form;
+      }
+      return false;
     }
   }
+  return false;
 }
 
 function rewriteFormula(formula, searchedVariable) {
