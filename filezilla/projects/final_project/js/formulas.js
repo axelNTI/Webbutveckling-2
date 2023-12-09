@@ -9,7 +9,7 @@ let variables_in_formulas = {
 let unit = {
   s: "m",
   v: "m/s",
-  a: "m/s**2",
+  a: "m/s^2",
   t: "s",
   v0: "m/s",
   m: "kg",
@@ -52,13 +52,19 @@ function main() {
     let results = [];
     for (let i of formula) {
       for (let j of knownVariables) {
-        i = i.replace(
+        i = i.replaceAll(
           j,
           parseFloat(document.querySelector(`#v_${j}`).value) *
             lookupTable[j][document.querySelector(`#e_${j}`).value]
         );
       }
       results.push(eval(i));
+    }
+    if (isNaN(results)) {
+      document.querySelector(
+        "output"
+      ).innerHTML = `<p>Minst en storhet saknade värde</p>`;
+      return;
     }
     document.querySelector(
       "output"

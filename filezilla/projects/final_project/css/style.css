@@ -1,3 +1,7 @@
+:root {
+  --width: 15svw;
+}
+
 body {
   align-items: center;
   justify-content: center;
@@ -11,36 +15,39 @@ body {
     }
   }
   & > main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    & > section:first-of-type {
-      & > section {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        & input {
-          margin-top: 5px;
-        }
-        & select {
-          margin-top: 5px;
-        }
-      }
-      & > output {
-        & > p {
-          font-size: 32px;
-          padding-top: 10svh;
-        }
-      }
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     & > section {
-      & math {
-        padding-top: 10px;
+      & > * {
+        margin: 10px;
+      }
+      & > table {
+        width: 100%;
+        & tr:not(:first-of-type) {
+          text-align: right;
+          & > td:last-of-type {
+            & > input:first-of-type {
+              /* width: fit-content; */
+            }
+            & > input:last-of-type {
+              /* width: --width; */
+            }
+            & > select {
+              width: 75px;
+            }
+          }
+        }
+        & * {
+          margin-bottom: 3px;
+        }
       }
     }
-    & h2 {
-      padding-top: 10px;
-    }
-    & h3 {
-      padding-top: 10px;
+    & > article {
+      & > * {
+        margin: 10px;
+      }
     }
   }
 }
