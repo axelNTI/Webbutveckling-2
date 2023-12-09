@@ -28,12 +28,6 @@ body {
         & tr:not(:first-of-type) {
           text-align: right;
           & > td:last-of-type {
-            & > input:first-of-type {
-              /* width: fit-content; */
-            }
-            & > input:last-of-type {
-              /* width: --width; */
-            }
             & > select {
               width: 75px;
             }

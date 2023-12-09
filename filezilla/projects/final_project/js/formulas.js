@@ -39,10 +39,18 @@ function main() {
   ].map((x) => x.value);
   const search = document.querySelector("input[name=search]:checked").value;
   if (knownVariables.indexOf(search) != -1) {
-    document.querySelector("output").innerHTML = `<p>Svar: ${
+    let value =
       parseFloat(document.querySelector(`#v_${search}`).value) *
-      lookupTable[search][document.querySelector(`#e_${search}`).value]
-    } ${unit[search]}</p>`;
+      lookupTable[search][document.querySelector(`#e_${search}`).value];
+    if (isNaN(value)) {
+      document.querySelector(
+        "output"
+      ).innerHTML = `<p>Minst en storhet saknade värde</p>`;
+      return;
+    }
+    document.querySelector(
+      "output"
+    ).innerHTML = `<p>Svar: ${value} ${unit[search]}</p>`;
     return;
   }
   let formula = findFormula(knownVariables, search, []);
