@@ -1,0 +1,46 @@
+body {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  & > header {
+    width: 100svw;
+    height: 10svh;
+    background-color: seagreen;
+    & > h1 {
+      padding-top: 3svh;
+    }
+  }
+  & > main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    & > section:first-of-type {
+      & > section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        & input {
+          margin-top: 5px;
+        }
+        & select {
+          margin-top: 5px;
+        }
+      }
+      & > output {
+        & > p {
+          font-size: 32px;
+          padding-top: 10svh;
+        }
+      }
+    }
+    & > section {
+      & math {
+        padding-top: 10px;
+      }
+    }
+    & h2 {
+      padding-top: 10px;
+    }
+    & h3 {
+      padding-top: 10px;
+    }
+  }
+}

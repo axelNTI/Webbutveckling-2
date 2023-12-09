@@ -4,67 +4,174 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/formulas.js" defer></script>
     <title>Formelbok</title>
   </head>
   <body>
-    <h1>Formelbok</h1>
-    <h2>Input</h2>
-    <form>
-      Känt värde: <br />
-      s <input type="number" id="distance" /><br />
-      v <input type="number" id="currentVelocity" /> <br />
-      a <input type="number" id="acceleration" /> <br />
-      t <input type="number" id="time" /> <br />
-      v<sub>0</sub><input type="number" id="initialVelocity" /> <br />
-      m <input type="number" id="mass" /> <br />
-      F <input type="number" id="force" /> <br />
-      Sökt värde: <br />
-      s <input name="search" type="radio" value="s" /><br />
-      v <input name="search" type="radio" value="v" /> <br />
-      a <input name="search" type="radio" value="a" /> <br />
-      t <input name="search" type="radio" value="t" /> <br />
-      v<sub>0</sub><input name="search" type="radio" value="v0" />
-      <br />
-      m <input name="search" type="radio" value="m" /> <br />
-      F <input name="search" type="radio" value="F" /> <br />
-      <input id="clickMe" type="button" value="Calculate" onclick="main();" />
-    </form>
-    <h2>Mekanik</h2>
-    <h3>Likformig rörelse</h3>
-    <math>
-      <mi>s</mi>
-      <mo>=</mo>
-      <mi>v</mi>
-      <mo>&it;</mo>
-      <mi>t</mi>
-    </math>
-    <h3>Likformigt accelererad rörelse</h3>
-    <math>
-      <mi>v</mi>
-      <mo>=</mo>
-      <msub><mi>v</mi><mn>0</mn></msub>
-      <mo>+</mo>
-      <mi>a</mi>
-      <mo>&it;</mo>
-      <mi>t</mi>
-    </math>
-    <br />
-    <math>
-      <mi>s</mi>
-      <mo>=</mo>
-      <msub> <mi>v</mi><mn>0</mn> </msub>
-      <mo>&it;</mo>
-      <mi>t</mi>
-      <mo>+</mo>
-      <mfrac>
-        <mrow>
-          <mi>a</mi><mo>&it;</mo> <msup><mi>t</mi><mn>2</mn></msup>
-        </mrow>
-        <mrow>
-          <mn>2</mn>
-        </mrow>
-      </mfrac>
-    </math>
+    <header><h1>Formelbok</h1></header>
+    <main>
+      <section>
+        <h2>Input</h2>
+        <section>
+          <form id="s">
+            <h3>Sökt storhet</h3>
+            <label>s</label><input name="search" type="radio" value="s" /><br />
+            <label>v</label><input name="search" type="radio" value="v" /><br />
+            <label>a</label><input name="search" type="radio" value="a" /><br />
+            <label>t</label><input name="search" type="radio" value="t" /><br />
+            <label>v<sub>0</sub></label>
+            <input name="search" type="radio" value="v0" /><br />
+            <label>m</label><input name="search" type="radio" value="m" /><br />
+            <label>F</label><input name="search" type="radio" value="F" /><br />
+          </form>
+          <form id="k">
+            <h3>Kända storheter</h3>
+            <label for="v_s">s</label>
+            <input name="known" type="checkbox" id="k_s" value="s" /><br />
+            <label for="k_v">v</label>
+            <input name="known" type="checkbox" id="k_v" value="v" /> <br />
+            <label for="k_a">a</label>
+            <input name="known" type="checkbox" id="k_a" value="a" /> <br />
+            <label for="k_t">t</label>
+            <input name="known" type="checkbox" id="k_t" value="t" /> <br />
+            <label for="k_v0">v<sub>0</sub></label>
+            <input name="known" type="checkbox" id="k_v0" value="v0" /> <br />
+            <label for="k_m">m</label>
+            <input name="known" type="checkbox" id="k_m" value="m" /> <br />
+            <label for="k_F">F</label>
+            <input name="known" type="checkbox" id="k_F" value="F" /> <br />
+          </form>
+          <form id="v">
+            <h3>Kända storheters värden</h3>
+            <label for="v_s">s</label><input type="number" id="v_s" /><br />
+            <label for="v_v">v</label><input type="number" id="v_v" /> <br />
+            <label for="v_a">a</label><input type="number" id="v_a" /> <br />
+            <label for="v_t">t</label><input type="number" id="v_t" /> <br />
+            <label for="v_v0">v<sub>0</sub></label>
+            <input type="number" id="v_v0" /> <br />
+            <label for="v_m">m</label><input type="number" id="v_m" /> <br />
+            <label for="v_F">F</label><input type="number" id="v_F" /> <br />
+          </form>
+          <form id="e">
+            <h3>Enhet för kända storheter</h3>
+            <label for="e_s">s</label>
+            <select name="e_s" id="e_s">
+              <option value="m">m</option>
+              <option value="Å">Å</option>
+              <option value="ly">ly</option>
+              <option value="pc">pc</option>
+              <option value="AU">AU</option>
+              <option value="n.m.">n.m.</option>
+            </select>
+            <br />
+            <label for="e_v">v</label>
+            <select name="e_v" id="e_v">
+              <option value="m/s">m/s</option>
+              <option value="km/h">km/h</option>
+              <option value="knop">knop</option>
+            </select>
+            <br />
+            <label for="e_a">a</label>
+            <select name="e_a" id="e_a">
+              <option value="m/s**2">m/s**2</option>
+            </select>
+            <br />
+            <label for="e_t">t</label>
+            <select name="e_t" id="e_t">
+              <option value="s">s</option>
+              <option value="min">min</option>
+              <option value="h">h</option>
+              <option value="d">d</option>
+            </select>
+            <br />
+            <label for="e_v0">v<sub>0</sub></label>
+            <select name="e_v0" id="e_v0">
+              <option value="m/s">m/s</option>
+              <option value="km/h">km/h</option>
+              <option value="knop">knop</option>
+            </select>
+            <br />
+            <label for="e_m">m</label>
+            <select name="e_m" id="e_m">
+              <option value="kg">kg</option>
+              <option value="t">t</option>
+              <option value="u">u</option>
+            </select>
+            <br />
+            <label for="e_F">F</label>
+            <select name="e_F" id="e_F">
+              <option value="N">N</option>
+              <option value="kp">kp</option>
+              <option value="dyn">dyn</option>
+            </select>
+            <br />
+          </form>
+        </section>
+        <input type="button" value="Calculate" onclick="main();" /><br />
+        <output></output>
+      </section>
+      <section>
+        <h2>Mekanik</h2>
+        <h3>Likformig rörelse</h3>
+        <math>
+          <mi>s</mi>
+          <mo>=</mo>
+          <mi>v</mi>
+          <mo>&it;</mo>
+          <mi>t</mi>
+        </math>
+        <h3>Likformigt accelererad rörelse</h3>
+        <math>
+          <mi>v</mi>
+          <mo>=</mo>
+          <msub><mi>v</mi><mn>0</mn></msub>
+          <mo>+</mo>
+          <mi>a</mi>
+          <mo>&it;</mo>
+          <mi>t</mi>
+        </math>
+        <br />
+        <math>
+          <mi>s</mi>
+          <mo>=</mo>
+          <msub> <mi>v</mi><mn>0</mn> </msub>
+          <mo>&it;</mo>
+          <mi>t</mi>
+          <mo>+</mo>
+          <mfrac>
+            <mrow>
+              <mi>a</mi><mo>&it;</mo> <msup><mi>t</mi><mn>2</mn></msup>
+            </mrow>
+            <mrow>
+              <mn>2</mn>
+            </mrow>
+          </mfrac>
+        </math>
+        <br />
+        <math>
+          <msup><mi>v</mi><mn>2</mn></msup>
+          <mo>-</mo>
+          <msup>
+            <msub> <mi>v</mi><mn>0</mn> </msub><mn>2</mn>
+          </msup>
+          <mo>=</mo>
+          <mi>2</mi>
+          <mo>&it;</mo>
+          <mi>a</mi>
+          <mo>&it;</mo>
+          <mi>s</mi>
+        </math>
+        <h3>Kraftekvationen</h3>
+        <math>
+          <mi>F</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <mo>&it;</mo>
+          <mi>a</mi>
+        </math>
+      </section>
+    </main>
   </body>
 </html>

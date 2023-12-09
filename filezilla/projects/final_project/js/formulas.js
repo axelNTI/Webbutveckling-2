@@ -6,61 +6,81 @@ let variables_in_formulas = {
   "F = m*a": ["F", "m", "a"],
 };
 
+let unit = {
+  s: "m",
+  v: "m/s",
+  a: "m/s**2",
+  t: "s",
+  v0: "m/s",
+  m: "kg",
+  F: "N",
+};
+
+let lookupTable = {
+  s: {
+    m: 1,
+    Å: 1e-10,
+    ly: 9.461e15,
+    pc: 3.0857e16,
+    AU: 1.496e11,
+    "n.m.": 1852,
+  },
+  v: { "m/s": 1, "km/h": 1 / 3.6, knop: 0.5144 },
+  a: { "m/s**2": 1 },
+  t: { s: 1, min: 60, h: 3600, d: 86400 },
+  v0: { "m/s": 1, "km/h": 1 / 3.6, knop: 0.5144 },
+  m: { kg: 1, t: 1000, u: 1.660539e-27 },
+  F: { N: 1, kp: 9.80665, dyn: 1e-5 },
+};
+
 function main() {
-  const distance = document.querySelector("#distance").value.length
-    ? "s"
-    : undefined;
-  const currentVelocity = document.querySelector("#currentVelocity").value
-    .length
-    ? "v"
-    : undefined;
-  const acceleration = document.querySelector("#acceleration").value.length
-    ? "a"
-    : undefined;
-  const time = document.querySelector("#time").value.length ? "t" : undefined;
-  const initialVelocity = document.querySelector("#initialVelocity").value
-    .length
-    ? "v0"
-    : undefined;
-  const mass = document.querySelector("#mass").value.length ? "m" : undefined;
-  const force = document.querySelector("#force").value.length ? "F" : undefined;
+  let knownVariables = [
+    ...document.querySelectorAll("input[type=checkbox]:checked"),
+  ].map((x) => x.value);
   const search = document.querySelector("input[name=search]:checked").value;
-  const knownVariables = [
-    distance,
-    currentVelocity,
-    acceleration,
-    time,
-    initialVelocity,
-    mass,
-    force,
-  ].filter(Boolean);
+  if (knownVariables.indexOf(search) != -1) {
+    document.querySelector("output").innerHTML = `<p>Svar: ${
+      parseFloat(document.querySelector(`#v_${search}`).value) *
+      lookupTable[search][document.querySelector(`#e_${search}`).value]
+    } ${unit[search]}</p>`;
+    return;
+  }
   let formula = findFormula(knownVariables, search, []);
   if (!formula) {
-    console.log("Ingen möjlig formel");
+    document.querySelector("output").innerHTML = "<p>Ingen möjlig formel</p>";
   } else {
-    console.log(formula);
+    let results = [];
+    for (let i of formula) {
+      for (let j of knownVariables) {
+        i = i.replace(
+          j,
+          parseFloat(document.querySelector(`#v_${j}`).value) *
+            lookupTable[j][document.querySelector(`#e_${j}`).value]
+        );
+      }
+      results.push(eval(i));
+    }
+    document.querySelector(
+      "output"
+    ).innerHTML = `<p>Svar: ${results} ${unit[search]}</p>`;
   }
 }
 
 function findFormula(knownVariables, search, triedVariables) {
-  console.log("find");
   let possible_formulas = Object.values(variables_in_formulas).filter(
     (formula) =>
       formula.indexOf(search) != -1 &&
       triedVariables.every((x) => formula.indexOf(x) == -1)
   );
-  console.log(possible_formulas);
   outer: for (let i of possible_formulas) {
     for (let j of i) {
       if (knownVariables.indexOf(j) == -1 && j != search) {
         continue outer;
       }
     }
-    console.log(i);
     return rewriteFormula(i, search);
   }
   triedVariables.push(search);
-  console.log(possible_formulas);
   outer: for (let i of possible_formulas) {
     for (let j of i.filter(
       (x) => knownVariables.indexOf(x) == -1 && x != search
@@ -70,9 +90,7 @@ function findFormula(knownVariables, search, triedVariables) {
       }
       i = rewriteFormula(i, search);
       let new_list = [];
-      console.log("yep");
       let new_formula = findFormula(knownVariables, j, triedVariables);
-      console.log(new_formula);
       if (!new_formula) {
         return false;
       }
@@ -88,9 +106,6 @@ function findFormula(knownVariables, search, triedVariables) {
 }
 
 function rewriteFormula(formula, searchedVariable) {
-  console.log("rewrite");
-  console.log(formula);
-  console.log(searchedVariable);
   formula = Object.keys(variables_in_formulas).find(
     (k) => variables_in_formulas[k] === formula
   );
