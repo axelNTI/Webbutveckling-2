@@ -11,18 +11,100 @@
     <h1>Dokumentation: Slutprojekt</h1>
     <h2>Vecka</h2>
     <h3>Vecka 47</h3>
-    <h4>2023-11-24</h4>
+    <h4>2023-11-24: Fredag</h4>
     <p>
       Jag påbörjade inmatningssystemet för hemsidan med värdeinmatning för varje
       storhet som kan användas. Dessutom skapade jag skriptet samt en knapp som
-      kallar på det
+      kallar på det.
     </p>
     <h3>Vecka 48</h3>
-    <h4>2023-11-28</h4>
+    <h4>2023-11-28: Tisdag</h4>
     <p>
       Jag lade till skript-kod för att föra över de inmatade värdena till
-      variabler i funktionen och för att göra detta gav jag varje input ett
-      unikt ID. Slutligen skapade jag en radio-input för att hämta den sökta variabeln samt skript-kod för att 
+      variabler i funktionen med hjälp av querySelector som sökte efter unika ID
+      som jag gav till vaje input. Dessutom skapade jag en radio-input för att
+      hämta den sökta variabeln samt skript-kod för att lagra den i en variabel.
+      Dessutom påbörjade jag en funktion som skriver om en formel och bryter ut
+      den sökta variabeln. Den ger tillbaka en lista av strängar på alla
+      relevanta formler.
+    </p>
+    <h4>2023-12-01: Fredag</h4>
+    <p>
+      Jag fortsatte på skriptet. En 2-dimensionell lista som innehöll varje
+      formel och dess storheter. Dessutom skrevs en kort bit kod som filtrerade
+      ut oanvända storheter. Sedan påbörjades koden för att söka efter en formel
+      som kan ge ett svar. Vid denna tidspunkt var algoritmen väldigt simpel och
+      kombinerade inte formler. Den sökte enbart igenom alla storheter i alla
+      formler och struntade i en formel om minst en storhet inte fanns i angivna
+      storheter.
+    </p>
+    <h3>Vecka 49:</h3>
+    <h4>2023-12-05: Tisdag</h4>
+    <p>
+      Här skrev jag om radio-inputen för den sökta variabeln då den tidigare gav
+      hela namet (såsom "mass") medan resten av programmet använde
+      förkortningarna (såsom "m"). Därför bytte jag deras värde till
+      förkortningarna. I skriptet gjorde jag en nödvändig omskrivning för att
+      den skulle fungera korrekt. Tidigare kollade jag bara om alla kända
+      storheter fanns i formeln som jag sökte. Vid detta tillfälle lade jag även
+      till en filter funktion som filtrerade ut formler som inte innehöll den
+      sökta storheten. Däremot fungerade detta inte korrekt då koden som kollade
+      om varje storhet i varje formel fanns i kända storheter. Eftersom den
+      sökta storheten fanns i varje av dessa men inte i kända storheter blev
+      varje formel nekad även om den hade svaret. Jag lyckades inte hitta ett
+      svar på detta problem.
+    </p>
+    <h4>2023-12-07: Torsdag</h4>
+    <p>
+      Jag skrev om listan med alla formler och dess storheter till ett objekt
+      som vars key är en sträng på formeln och value är den gamla listan på
+      varje storhet i formlen. Eftersom variabelinhämtningen av kända variabler
+      tog deras värde medan sökfunktionen kollade efter deras namn behövde jag
+      skriva om koden så att den gav namnet om den hade ett värde. Här flyttade
+      jag även över sökfunktionen till en seperat funktion. Här löste jag
+      tisdagens problem genom att lägga till en check som kollade om den
+      nuvarande storheten var den sökta storheten och isåfall strunta i den. Nu
+      påbörjade jag även den komplexa delen av projektet. Den rekursiva
+      funktionen för att kombinera formler om det inte fanns någon lösning med
+      bara en formel. Den gick vid detta lag igenom varje möjlig formel och alla
+      okända storheter i dessa formler och sökte efter en formel för en. Detta
+      ledde alltid till en "Maximum call stack size exceeded"-error och gav mig
+      ett av de största problemen under detta projekt. Detta var inte ett
+      programmeringsproblem utan ett logiskt problem. Slutligen utökade jag
+      funktionen för att bryta ut och skriva ut formler.
+    </p>
+    <h4>2023-12-08: Fredag</h4>
+    <h5>GitHub Commit 1:</h5>
+    <p>
+      Detta tillfälle blev det inte mycket kod skriven. Jag försökte lösa
+      torsdagens problem med en flowchart. Därför spenderade jag en stor del av
+      tillfället med detta. Den var långt ifrån perfekt men det var mycket
+      lättare att följa och implementera den än koden jag tidigare hade skrivit.
+      Här skrev jag om koden som gav en lista av möjliga formler genom att inte
+      ha med formler som innehöll en variabel som tidigare hade testats. Det här
+      var det som krävdes för att fixa problmet med "Maximum call stack size
+      exceeded". Även fast det inte gav ett error efter det gav den inte
+      tillbaka korrekta formler när den behövde kombinera formler. Här
+      kombinerade jag även funktionen för att hitta formler och rekursivt söka
+      efter formler då det bara är en rekursiv länk. Efter den gjort den första
+      loopen i funktionen och innan den går över till att kombinera formler
+      läggs den sökta variabeln till i en "triedVariables"-lista som håller reda
+      på de storheter som har testats och används i filtreringen för möjliga
+      formler som jag beskrev innan. Här skrev jag om den rekursiva sökningen
+      för att bara söka efter formler där ingen storhet finns i
+      "triedVariables". Slutligen lade jag till ett antal "return false;" för
+      att ge representera att det inte finns en lösning på problemet.
+    </p>
+    <h5>GitHub Commit 2:</h5>
+    <p>
+      Jag gjorde inte mycket vid detta tillfälle. Jag skrev om funktionen som
+      skriver om formler för att hantera variabler i den istället för på varje
+      ställe när man kallar på den, vilket är det jag hade gjort tidigare.
+    </p>
+    <h5>GitHub Commit 3:</h5>
+    <p>
+      Här fortsatte jag att få den rekursiva funktionen och fick den nästan att
+      fugera.
     </p>
   </body>
 </html>
