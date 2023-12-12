@@ -1,3 +1,4 @@
+// Formler i strängformat och som enskilda storheter
 let variables_in_formulas = {
   "v = v0 + a*t": ["v", "v0", "a", "t"],
   "s = v0*t + (a*t**2)/2": ["s", "v0", "t", "a"],
@@ -5,6 +6,7 @@ let variables_in_formulas = {
   "F = m*a": ["F", "m", "a"],
 };
 
+// Storheter och dess SI-enhet
 let unit = {
   s: "m",
   v: "m/s",
@@ -15,6 +17,7 @@ let unit = {
   F: "N",
 };
 
+// Omvandling av värden till storhetens SI-enhet
 let lookupTable = {
   s: {
     m: 1,
@@ -32,11 +35,17 @@ let lookupTable = {
   F: { N: 1, kp: 9.80665, dyn: 1e-5 },
 };
 
+//Hanterar input och output på sidan. Kallas när "Beräkna"-knappen trycks.
 function main() {
+  // Skapar en lista av alla kända storheter.
   let knownVariables = [
     ...document.querySelectorAll("input[type=checkbox]:checked"),
   ].map((x) => x.value);
+
+  // Sökta storheten
   const search = document.querySelector("input[name=search]:checked").value;
+
+  // Skriver ut den sökta storhetens värde om den är känd.
   if (knownVariables.indexOf(search) != -1) {
     let value =
       parseFloat(document.querySelector(`#v_${search}`).value) *
@@ -52,22 +61,32 @@ function main() {
     ).innerHTML = `<p>Svar: ${value} ${unit[search]}</p>`;
     return;
   }
+
+  // Använder funktionen nedan för att hitta en fungerande formel 
   let formula = findFormula(knownVariables, search, []);
+
+  // Om ingen formel fungerar
   if (!formula) {
     document.querySelector("output").innerHTML = "<p>Ingen möjlig formel</p>";
     return;
   }
+
+  // Räknar ut formelns värde
   let results = [];
   for (let i of formula) {
     for (let j of knownVariables) {
+      // Byter storheter mot deras värde i SI-enheter
       i = i.replaceAll(
         j,
         parseFloat(document.querySelector(`#v_${j}`).value) *
           lookupTable[j][document.querySelector(`#e_${j}`).value]
       );
     }
+    // Räknar ut formelns värde
     results.push(eval(i));
   }
+
+  // Om flera möjliga svar finns, skriver ut alla.
   if (Array.isArray(results)) {
     let str = "<p>";
     for (let i of results) {
@@ -82,43 +101,58 @@ function main() {
     document.querySelector("output").innerHTML = `${str} </p>`;
     return;
   }
+  // Skrivs ut om ingen formel fungerar
   if (isNaN(results)) {
     document.querySelector("output").innerHTML = "<p>Ingen möjlig formel</p>";
     return;
   }
+
+  // Skriver ut formelns värde
   document.querySelector(
     "output"
   ).innerHTML = `<p>Svar: ${results} ${unit[search]}</p>`;
 }
 
+// Rekursivt söker igenom formler och kombinerar dem för att få en formel som ger svaret
 function findFormula(knownVariables, search, triedVariables) {
+  // Skapar en array av alla möjliga formler med den sökta storheten och testade storheten i åtanke
   let possible_formulas = Object.values(variables_in_formulas).filter(
     (formula) =>
       formula.indexOf(search) != -1 &&
       triedVariables.every((x) => formula.indexOf(x) == -1)
   );
+  // Kollar om en formel kan ge svaret utan kombinering
   outer: for (let i of possible_formulas) {
     for (let j of i) {
       if (knownVariables.indexOf(j) == -1 && j != search) {
         continue outer;
       }
     }
+
+    // Skickar tillbaka den hittade formeln omskriven för att bryta ut den sökta storheten
     return rewriteFormula(i, search);
   }
   triedVariables.push(search);
+
+  // Rekursivt söker igenom formler för att kombinera dem
   outer: for (let i of possible_formulas) {
     for (let j of i.filter(
       (x) => knownVariables.indexOf(x) == -1 && x != search
     )) {
+      // Utesluter en formlen om en storhet redan är testad
       if (triedVariables.indexOf(j) != -1) {
         continue outer;
       }
       i = rewriteFormula(i, search);
       let new_list = [];
+
+      // Rekursivt söker igenom formler
       let new_formula = findFormula(knownVariables, j, triedVariables);
       if (!new_formula) {
         return false;
       }
+
+      // Byter ut alla instanser av den okända storheten med den nya formeln
       for (let k of i) {
         for (let l of new_formula) {
           new_list.push(k.replaceAll(j, l));
@@ -127,9 +161,12 @@ function findFormula(knownVariables, search, triedVariables) {
       return new_list;
     }
   }
+
+  // Skickar tillbaka för att representera att ingen formel finns
   return false;
 }
 
+// Skriver om en formel genom att bryta ut den sökta storheten.
 function rewriteFormula(formula, searchedVariable) {
   formula = Object.keys(variables_in_formulas).find(
     (k) => variables_in_formulas[k] === formula
