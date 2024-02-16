@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL-questions</title>
+  </head>
+  <body>
+    <h1>Answers SQL-questions</h1>
+    <ol>
+      <li>create schema mindatabas;</li>
+      <li>
+        create table mindatabas.personal ( PersonalID INT NOT NULL
+        AUTO_INCREMENT, Förnamn VARCHAR(15) NOT NULL, Efternamn VARCHAR(15) NOT
+        NULL, Lön INT NOT NULL, Kontor VARCHAR(15) NOT NULL, PRIMARY KEY
+        (PersonalID) );
+      </li>
+      <li>
+        INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön, Kontor) VALUES
+        ('Kalle', 'Anka', 10000, 'Stockholm');
+      </li>
+      <li>SELECT * FROM mindatabas.personal WHERE Kontor = 'Uppsala';</li>
+      <li>
+        INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön, Kontor) VALUES
+        ('Knatte', 'Anka', 10000, 'Luleå'); INSERT INTO mindatabas.personal
+        (Förnamn, Efternamn, Lön, Kontor) VALUES ('Fnatte', 'Anka', 10000,
+        'Luleå'); INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön,
+        Kontor) VALUES ('Tjatte', 'Anka', 10000, 'Luleå');
+      </li>
+      <li>SELECT * FROM mindatabas.personal WHERE Lön > 30000;</li>
+      <li>
+        UPDATE mindatabas.personal SET Kontor = 'Helsingborg' WHERE Kontor =
+        'Malmö';
+      </li>
+      <li>
+        SELECT * FROM mindatabas.personal WHERE Kontor = 'Stockholm' OR Kontor =
+        'Uppsala';
+      </li>
+      <li>DELETE FROM mindatabas.personal WHERE Kontor = 'Stockhom';</li>
+      <li>SELECT * FROM mindatabas.personal ORDER BY Kontor;</li>
+      <li>SELECT * FROM mindatabas.personal ORDER BY Efternamn DESC;</li>
+      <li>SELECT DISTINCT Kontor FROM mindatabas.personal</li>
+      <li>
+        <!-- 
+            Do later
+         -->
+      </li>
+      <li>SELECT COUNT(PersonalID) FROM mindatabas.personal AS Antal;</li>
+    </ol>
+  </body>
+</html>
