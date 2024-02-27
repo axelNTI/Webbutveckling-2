@@ -22,10 +22,13 @@
       <li>SELECT * FROM mindatabas.personal WHERE Kontor = 'Uppsala';</li>
       <li>
         INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön, Kontor) VALUES
-        ('Knatte', 'Anka', 10000, 'Luleå'); INSERT INTO mindatabas.personal
-        (Förnamn, Efternamn, Lön, Kontor) VALUES ('Fnatte', 'Anka', 10000,
-        'Luleå'); INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön,
-        Kontor) VALUES ('Tjatte', 'Anka', 10000, 'Luleå');
+        ('Knatte', 'Anka', 10000, 'Luleå');
+        <br />
+        INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön, Kontor) VALUES
+        ('Fnatte', 'Anka', 10000, 'Luleå');
+        <br />
+        INSERT INTO mindatabas.personal (Förnamn, Efternamn, Lön, Kontor) VALUES
+        ('Tjatte', 'Anka', 10000, 'Luleå');
       </li>
       <li>SELECT * FROM mindatabas.personal WHERE Lön > 30000;</li>
       <li>
@@ -39,13 +42,30 @@
       <li>DELETE FROM mindatabas.personal WHERE Kontor = 'Stockhom';</li>
       <li>SELECT * FROM mindatabas.personal ORDER BY Kontor;</li>
       <li>SELECT * FROM mindatabas.personal ORDER BY Efternamn DESC;</li>
-      <li>SELECT DISTINCT Kontor FROM mindatabas.personal</li>
+      <li>SELECT DISTINCT Kontor FROM mindatabas.personal;</li>
       <li>
         <!-- 
             Do later
          -->
       </li>
       <li>SELECT COUNT(PersonalID) FROM mindatabas.personal AS Antal;</li>
+      <li>SELECT AVG(Lön) FROM mindatabas.personal;</li>
+      <li>SELECT MAX(Lön) FROM mindatabas.personal;</li>
+      <li>SELECT MIN(Lön) FROM mindatabas.personal;</li>
+      <li>SELECT Kontor, AVG(Lön) FROM mindatabas.personal</li>
+      <li>
+        SELECT COUNT(PERSONALID) FROM mindatabas.personal WHERE Kontor =
+        'Uppsala';
+      </li>
+      <li>
+        create table mindatabas.kontor ( KontorID INT NOT NULL AUTO_INCREMENT,
+        Stad VARCHAR(15) NOT NULL, PRIMARY KEY (KontorID) );
+        <br />
+        INSERT INTO mindatabas.kontor (Stad) SELECT DISTINCT Kontor FROM
+        mindatabas.personal;
+        <br />
+        ALTER TABLE mindatabas.personal
+      </li>
     </ol>
   </body>
 </html>
