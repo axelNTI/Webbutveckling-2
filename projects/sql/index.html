@@ -39,20 +39,18 @@
         SELECT * FROM mindatabas.personal WHERE Kontor = 'Stockholm' OR Kontor =
         'Uppsala';
       </li>
-      <li>DELETE FROM mindatabas.personal WHERE Kontor = 'Stockhom';</li>
+      <li>DELETE FROM mindatabas.personal WHERE Kontor = 'Stockholm';</li>
       <li>SELECT * FROM mindatabas.personal ORDER BY Kontor;</li>
       <li>SELECT * FROM mindatabas.personal ORDER BY Efternamn DESC;</li>
       <li>SELECT DISTINCT Kontor FROM mindatabas.personal;</li>
       <li>
-        <!-- 
-            Do later
-         -->
+        <img src="Skärmbild 2024-02-29 091308.png" alt="" />
       </li>
-      <li>SELECT COUNT(PersonalID) FROM mindatabas.personal AS Antal;</li>
+      <li>SELECT COUNT(PersonalID) FROM mindatabas.personal;</li>
       <li>SELECT AVG(Lön) FROM mindatabas.personal;</li>
       <li>SELECT MAX(Lön) FROM mindatabas.personal;</li>
       <li>SELECT MIN(Lön) FROM mindatabas.personal;</li>
-      <li>SELECT Kontor, AVG(Lön) FROM mindatabas.personal</li>
+      <li>SELECT Kontor, AVG(Lön) FROM mindatabas.personal GROUP BY Kontor;</li>
       <li>
         SELECT COUNT(PERSONALID) FROM mindatabas.personal WHERE Kontor =
         'Uppsala';
@@ -64,7 +62,49 @@
         INSERT INTO mindatabas.kontor (Stad) SELECT DISTINCT Kontor FROM
         mindatabas.personal;
         <br />
-        ALTER TABLE mindatabas.personal
+        ALTER TABLE mindatabas.personal ADD COLUMN KontorID INT, ADD CONSTRAINT
+        fk_kontor FOREIGN KEY (KontorID) REFERENCES mindatabas.kontor(KontorID);
+        <br />
+        UPDATE mindatabas.personal p JOIN mindatabas.kontor k ON p.Kontor =
+        k.Stad SET p.KontorID = k.KontorID;
+        <br />
+        ALTER TABLE mindatabas.personal DROP COLUMN Kontor;
+      </li>
+      <li>
+        SELECT p.Förnamn, p.Efternamn, k.Stad FROM mindatabas.personal p JOIN
+        mindatabas.kontor k ON p.KontorID = k.KontorID;
+      </li>
+      <li>
+        create table mindatabas.kommentarer ( KommentarID INT NOT NULL
+        AUTO_INCREMENT, PersonalID INT NOT NULL, Kommentar TEXT NOT NULL,
+        PRIMARY KEY (KommentarID), FOREIGN KEY (PersonalID) REFERENCES
+        mindatabas.personal(PersonalID) );
+        <br />
+        INSERT INTO mindatabas.kommentarer (PersonalID, Kommentar) VALUES (1,
+        'Bra jobbat!');
+        <br />
+        INSERT INTO mindatabas.kommentarer (PersonalID, Kommentar) VALUES (2,
+        'Fortsätt så!');
+      </li>
+      <li>
+        SELECT p.Förnamn, p.Efternamn, k.Kommentar FROM mindatabas.personal p
+        LEFT JOIN mindatabas.kommentarer k ON p.PersonalID = k.PersonalID;
+      </li>
+      <li>
+        SELECT Förnamn, Efternamn, Lön FROM mindatabas.personal WHERE Lön =
+        (SELECT MAX(Lön) FROM mindatabas.personal);
+      </li>
+      <li>
+        SELECT Förnamn, Efternamn, Lön FROM mindatabas.personal WHERE Lön =
+        (SELECT MIN(Lön) FROM mindatabas.personal);
+      </li>
+      <li>
+        SELECT Förnamn, Efternamn, Lön FROM mindatabas.personal WHERE Lön <
+        (SELECT AVG(Lön) FROM mindatabas.personal);
+      </li>
+      <li>
+        SELECT Förnamn, Efternamn, Lön FROM mindatabas.personal WHERE Lön >
+        (SELECT AVG(Lön) FROM mindatabas.personal);
       </li>
     </ol>
   </body>
