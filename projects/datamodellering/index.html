@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Databasmodellering</title>
+  </head>
+  <body>
+    <ol>
+      <li>
+        <ol type="a">
+          <li>Självständiga objekt, beroendeobjekt och ramobjekt</li>
+          <li>
+            För självständiga objekt ska ha en egen unik primärnyckel.
+            Beroendeobjekt kan antingen has sin egna unika primärnyckel eller ha
+            en i kombination med det objektet de är beroende av. Ett ramobjekt
+            ska också ha en egen unik primärnyckel.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol type="a">
+          <li>
+            Beroendeobjekt: <br />
+            <img src="images/2amodell.png" alt="" />
+            <img src="images/2atabell.png" alt="" />
+          </li>
+          <li>
+            Ramobjekt: <br />
+            <img src="images/2bmodell.png" alt="" />
+            <img src="images/2btabell.png" alt="" />
+          </li>
+        </ol>
+      </li>
+      <li>
+        T.ex en person och ett personnummer. Varje person har ett unikt
+        personnummer och personnumret är unikt för varje person.
+      </li>
+      <li>
+        T.ex privatägda cyklar. Varje cykel tillhör en person men en person kan
+        ha många cyklar.
+      </li>
+      <li>
+        Det är primärnyckeln för en annan tabell och används för att skapa en
+        relation mellan två tabeller.
+      </li>
+      <li>
+        <ol type="a">
+          <li>
+            Varje kund tillhör ett distrikt men ett distrikt kan ha hur många
+            kunder som helst.
+          </li>
+          <li>
+            Man upprepar inte information i onödan då man inte behöver skriva
+            den för varje kund.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol type="a">
+          <li>
+            Modell: <br />
+            <img src="images/7amodell.png" alt="" />
+          </li>
+          <li>
+            Modell: <br />
+            <img src="images/7bmodell.png" alt="" />
+          </li>
+          <li>
+            Tabell: <br />
+            <img src="images/7ctabell.png" alt="" />
+          </li>
+        </ol>
+      </li>
+      <li>
+        En tabell med en kolumn som hänvisar till en primärnyckel i samma
+        tabell. <br />
+        <img src="images/8modell.png" alt="" />
+      </li>
+      <li>
+        Primärnyckeln är en unik markör för varje rad i tabellen som
+        representerar all dess data. Det är bäst att välja en incremental som
+        primärnyckel. Däremot kan något annat som är garanterat unikt användas.
+      </li>
+      <li>
+        <ol type="a">
+          <li>
+            Tabell: <br />
+            <img src="images/10atabell.png" alt="" />
+          </li>
+          <li>
+            a = ramobjekt<br />
+            e = Självständigt objekt<br />
+            i = beroendeobjekt<br />
+            f = Självständigt objekt<br />
+          </li>
+          <li>Egenrelation</li>
+          <li>Många till många-relation</li>
+          <li>
+            Varje instans av f kan ha flera från i men varje i måste ha en från
+            f
+          </li>
+          <li>
+            Modell: <br />
+            <img src="images/10fmodell.png" alt="" />
+          </li>
+        </ol>
+      </li>
+      <li>
+        Modell: <br />
+        <img src="images/11modell.png" alt="" />
+      </li>
+      <li>
+        <ol type="a">
+          <li>
+            Tabell: <br />
+            <img src="images/12atabell.png" alt="" />
+          </li>
+          <li>
+            Tabell: <br />
+            <img src="images/12btabell.png" alt="" />
+          </li>
+          <li>
+            Tabell: <br />
+            <img src="images/12ctabell.png" alt="" />
+          </li>
+        </ol>
+      </li>
+      <li>
+        <ol type="a">
+          <li></li>
+          <li></li>
+        </ol>
+      </li>
+      <li>
+        <ol type="a">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </li>
+    </ol>
+  </body>
+</html>
