@@ -9,7 +9,11 @@
     <h1>Slutprojekt: Planering</h1>
     <h2>Inledning</h2>
     <h3>Kort beskrivning</h3>
-    <p></p>
+    <p>
+      Detta projekt bygger på en discord-server som jag tidigare har skapat. Den
+      har inget specifikt syfte utan används för alla möjliga ändamål. Därför
+      borde det vara enkelt att göra någon modul som knyter an till de flesta av
+    </p>
     <h3>Målgrupp</h3>
     <p></p>
     <h3>Betygsmål</h3>
@@ -22,19 +26,92 @@
     <p></p>
     <h3>Moduler</h3>
     <h4>Modul 1: Registrering av konto</h4>
-    <p>Här är det enbart att återanvända koden från inloggningsprojektet.</p>
+    <p>
+      Här är det enbart att återanvända koden från inloggningsprojektet. Däremot
+      kommer jag lägga till obligatorisk verifiering av epostadress. Om ett
+      konto skapas men inte verifieras tas det bort om någon annan verifierar
+      ett konto med samma epostadress.
+    </p>
     <h4>Modul 2: Borttagning av konto</h4>
     <p>
       För att föja GDPR så kommer jag lägga till funktionen att ta bort ens
       konto från databasen. För att öka säkerheten så komer detta sannolikt att
       inkludera e-mail bekräftelse.
     </p>
-    <h4>Modul 1</h4>
-    <h4>Modul 1</h4>
-    <h4>Modul 1</h4>
-    <h4>Modul 1</h4>
-    <h4>Modul 1</h4>
-    <h4>Modul n: https och hosting</h4>
+    <h4>Modul 3: Ändring av kontoinformation</h4>
+    <p>
+      Här tillkommer ändring av användarnamn, epostaddress och lösenord. Detta
+      kommer ske via epost för att öka säkerheten.
+    </p>
+    <h4>Modul 4: Inloggning</h4>
+    <p>Här är det enbart att återanvända koden från inloggningsprojektet.</p>
+    <h4>Modul 5: Länkning av discord-konto till hemsida</h4>
+    <p>
+      Discord har redan en inbyggd funktion för att logga in med sitt discord
+      konto. Jag kommer använda detta för att länka discord-konton till
+      hemsidan. Detta kommer att användas för att ge medlemmar på
+      discord-servern extra funktioner på hemsidan.
+    </p>
+    <h4>Modul 6: discord.js</h4>
+    <p>
+      Jag kommer använda discord.js för att skapa en bot som kan utföra
+      funktioner på discord-servern. Denna modul är enbart konfiguration av
+      botten medan själva funktionerna kommer i senare moduler.
+    </p>
+    <h4>Modul 7: Citat-statistik</h4>
+    <p>
+      Denna modul kommer att kombinera discord.js med hemsidan för att
+      sammanställa alla citat på servern, spara dem i en databas och sedan visa
+      statistik över hur många citat varje medlem har skrivit, hur ofta
+      medlemmar blir citerade samt vilka citat som är mest populära.
+    </p>
+    <h4>Modul 8: Aktivitetsstatistik</h4>
+    <p>
+      Denna modul kommer att använda discord.js för att sammanställa statistik
+      över medlemmarnas aktivitet på servern. Detta kommer att sparas i en
+      databas och sedan sammanfattas för att visa upp vilka spel och
+      applikationer som är populärast på servern.
+    </p>
+    <h4>Modul 9: Bildgalleri</h4>
+    <p>
+      Denna modul kommer att använda discord.js för att ta skärmbilder från spel
+      som har lagts upp på servern, spara dem i en databas och sedan visa dessa
+      på hemsidan.
+    </p>
+    <h4>Modul 10: Kommentarer på bilderna</h4>
+    <p>
+      Denna modul kommer att ha ett kommentarsfält under varje bild där
+      användare kan skriva kommentarer. Dessa kommentarer kommer att sparas i en
+      databas för att kunna visas på hemsidan. Det svåra med denna modul är att
+      dynamiskt skapa sidor för varje bild.
+    </p>
+    <h4>Modul 11: Musik</h4>
+    <p>
+      Denna modul kommer att använda discord.js för att spara all musik som har
+      skickats på servern i en databas. Denna musik kommer sedan att kunna spelas
+      upp på hemsidan.
+    </p>
+    <h4>Modul 12: DnD</h4>
+    <p>
+      Då vårt dnd spel troligtvis flyttas online relativt snart så kommer jag
+      att använda discord.js för att skapa en bot som kan lagra
+      karaktärsinformation på privata hemsidor för varje spelare.
+    </p>
+    <h4>Modul 13: Minecraft-kartan</h4>
+    <p>
+      Den här är jag osäker på hur man skulle göra det här. Men om det fungerar
+      så skulle den visa upp en uppdatrerad karta över minecraft-världen som
+      servern använder. Jag har kollat på några packages som kan användas för
+      detta så det verkar möjligt. Däremot vet jag inte om det är rimligt.
+    </p>
+    <h4>Modul 14: Minecraft Create Schematics</h4>
+    <p>
+      Här är en till modul som jag är osäker på hur jag skulle göra den. Create
+      har en funktion som tillåter export av schematics. Däremot vet jag inte om
+      det är en fil eller sträng. Oavsett är det fullt möjligt att spara detta i
+      en databas och sedan visa upp det på hemsidan.
+    </p>
+    <h4>Modul 15: https och hosting</h4>
     <p>
       Jag känner en person som har tillgång till en server med public facing IP
       samt en domän och som har gått med på att använda den i detta syfte. Då
@@ -43,11 +120,9 @@
       är simpel kod. Däremot så måste jag även skaffa ett certifikat vilket går
       att få gratis via tjänsten som säljer domänen. Eftersom det inte är jag
       som äger domänen så kommer jag outsourca detta till personen nämnd ovan.
-    </p>
-    <h4>Modul n + 1: discord.js</h4>
-    <p>
-      I åtanke med projektets syfte planerar jag på att lägga till integration
-      med en dicord-bot.
+      Om tiden börjar ta slut men hemsidan är i hyfsat skick är det fullt
+      möjligt att jag tar denna modul i förväg för att få upp hemsidan på
+      internet.
     </p>
   </body>
 </html>
