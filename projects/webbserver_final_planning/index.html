@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Slutprojekt: Planering</title>
   </head>
   <body>
@@ -11,19 +12,126 @@
     <h3>Kort beskrivning</h3>
     <p>
       Detta projekt bygger på en discord-server som jag tidigare har skapat. Den
-      har inget specifikt syfte utan används för alla möjliga ändamål. Därför
-      borde det vara enkelt att göra någon modul som knyter an till de flesta av
+      har inget specifikt syfte utan används för alla möjliga ändamål. Därför är
+      majoriteten av modulerna självständiga från varandra och ordningen kan
+      ändras vid behov. Dessa moduler kommer att bygga på och förbättra
+      användningen av servern inom de områden den används.
     </p>
     <h3>Målgrupp</h3>
-    <p></p>
+    <p>
+      Målgruppen är de som redan är medlemmar på discord-servern. Det kommer
+      vara möjligt att besöka hemsidan utan att vara medlem på servern men
+      fokuset ligger, som nämnt innan, på medlemmarna.
+    </p>
     <h3>Betygsmål</h3>
-    <p></p>
+    <p>Mitt betygsmål för detta projekt är A.</p>
     <h2>Beskrivning</h2>
-    <h3>Beskrivning</h3>
-    <p></p>
     <h3>Lista av vad som ska finnas med i projektet</h3>
+    <h4>Frontend</h4>
+    <ul>
+      <li>
+        Index-sida med information om servern och länkar till de olika modulerna
+      </li>
+      <li>Registrerings-sida</li>
+      <li>Inloggnings-sida</li>
+      <li>
+        Konto-sida med möjlighet att ändra användarnamn, epostadress och
+        lösenord samt länka discord-konto.
+      </li>
+      <li>Statistik-sida</li>
+      <li>Bildgalleri-sida</li>
+      <li>Minecraft-karta-sida</li>
+      <li>Minecraft-schematics-sida</li>
+      <li>Musik-sida</li>
+      <li>DnD-sida</li>
+    </ul>
+    <h4>Backend</h4>
+    <ul>
+      <li>
+        Registrering av konto med verifiering av epostadress och borttagning av
+        konto
+      </li>
+      <li>
+        Ändring av kontoinformation samt inloggning med verifiering av
+        epostadress
+      </li>
+      <li>Länkning av discord-konto till hemsida med discord OAuth2</li>
+      <li>
+        discord.js för att skapa en bot som kan utföra funktioner på
+        discord-servern
+      </li>
+      <li>Sammanställning av statistik över citat och aktivitet på servern</li>
+      <li>Bildgalleri med kommentarsfält och dynamiskt skapade sidor</li>
+      <li>Koppling till minecraft-servern för att visa karta</li>
+    </ul>
+    <h4>Databas</h4>
+    <ul>
+      <li>Tabell för konton</li>
+      <li>Tabell för citat</li>
+      <li>Tabell för aktivitet</li>
+      <li>Tabell för bilder</li>
+      <li>Tabell för kommentarer</li>
+      <li>Tabell för minecraft-karta</li>
+      <li>Tabell för minecraft-schematics</li>
+      <li>Tabell för musik</li>
+      <li>Tabell för DnD</li>
+    </ul>
+    <h4>Annat</h4>
+    <ul>
+      <li>Cert och hosting</li>
+      <li>OAuth2</li>
+    </ul>
     <h3>Filer</h3>
-    <p></p>
+    <h4>.hbs</h4>
+    <ul>
+      <li>index.hbs</li>
+      <li>register.hbs</li>
+      <li>login.hbs</li>
+      <li>account.hbs</li>
+      <li>statistics.hbs</li>
+      <li>gallery.hbs</li>
+      <li>
+        comments.hbs (dynamiskt skapade sidor för varje bild med kommentarsfält)
+      </li>
+      <li>minecraft.hbs</li>
+      <li>minecraft-schematics.hbs</li>
+      <li>music.hbs</li>
+      <li>dnd.hbs</li>
+    </ul>
+    <h4>.css</h4>
+    <ul>
+      <li>index.css</li>
+      <li>register.css</li>
+      <li>login.css</li>
+      <li>account.css</li>
+      <li>statistics.css</li>
+      <li>gallery.css</li>
+      <li>comments.css</li>
+      <li>minecraft.css</li>
+      <li>minecraft-schematics.css</li>
+      <li>music.css</li>
+      <li>dnd.css</li>
+    </ul>
+    <h4>.js</h4>
+    <h5>Frontend</h5>
+    <ul>
+      <li>index.js</li>
+      <li>register.js</li>
+      <li>login.js</li>
+      <li>account.js</li>
+      <li>statistics.js</li>
+      <li>gallery.js</li>
+      <li>comments.js</li>
+      <li>minecraft.js</li>
+      <li>minecraft-schematics.js</li>
+      <li>music.js</li>
+      <li>dnd.js</li>
+    </ul>
+    <h5>Backend</h5>
+    <ul>
+      <li>backend.js</li>
+    </ul>
+
     <h3>Moduler</h3>
     <h4>Modul 1: Registrering av konto</h4>
     <p>
@@ -85,31 +193,31 @@
       databas för att kunna visas på hemsidan. Det svåra med denna modul är att
       dynamiskt skapa sidor för varje bild.
     </p>
-    <h4>Modul 11: Musik</h4>
-    <p>
-      Denna modul kommer att använda discord.js för att spara all musik som har
-      skickats på servern i en databas. Denna musik kommer sedan att kunna spelas
-      upp på hemsidan.
-    </p>
-    <h4>Modul 12: DnD</h4>
-    <p>
-      Då vårt dnd spel troligtvis flyttas online relativt snart så kommer jag
-      att använda discord.js för att skapa en bot som kan lagra
-      karaktärsinformation på privata hemsidor för varje spelare.
-    </p>
-    <h4>Modul 13: Minecraft-kartan</h4>
+    <h4>Modul 11: Minecraft-kartan</h4>
     <p>
       Den här är jag osäker på hur man skulle göra det här. Men om det fungerar
       så skulle den visa upp en uppdatrerad karta över minecraft-världen som
       servern använder. Jag har kollat på några packages som kan användas för
       detta så det verkar möjligt. Däremot vet jag inte om det är rimligt.
     </p>
-    <h4>Modul 14: Minecraft Create Schematics</h4>
+    <h4>Modul 12: Minecraft Create Schematics</h4>
     <p>
       Här är en till modul som jag är osäker på hur jag skulle göra den. Create
       har en funktion som tillåter export av schematics. Däremot vet jag inte om
       det är en fil eller sträng. Oavsett är det fullt möjligt att spara detta i
       en databas och sedan visa upp det på hemsidan.
+    </p>
+    <h4>Modul 13: Musik</h4>
+    <p>
+      Denna modul kommer att använda discord.js för att spara all musik som har
+      skickats på servern i en databas. Denna musik kommer sedan att kunna
+      spelas upp på hemsidan.
+    </p>
+    <h4>Modul 14: DnD</h4>
+    <p>
+      Då vårt dnd spel troligtvis flyttas online relativt snart så kommer jag
+      att använda discord.js för att skapa en bot som kan lagra
+      karaktärsinformation på privata hemsidor för varje spelare.
     </p>
     <h4>Modul 15: https och hosting</h4>
     <p>
@@ -123,6 +231,17 @@
       Om tiden börjar ta slut men hemsidan är i hyfsat skick är det fullt
       möjligt att jag tar denna modul i förväg för att få upp hemsidan på
       internet.
+    </p>
+    <h3>Databas</h3>
+    <h3>Kunskaper</h3>
+    <p>
+      För detta projekt kommer jag behöva lära mig en hel del nya saker. Bland
+      annat
+    </p>
+    <h3>Säkerhet</h3>
+    <p>
+      Min plan är att se till att det här projektet är så säkert som möjligt.
+      All data som inte behöver användas i sin basform kommer krypteras.
     </p>
   </body>
 </html>
