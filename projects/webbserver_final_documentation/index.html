@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dokumentation</title>
+  </head>
+  <body>
+    <h1>Dokumentation</h1>
+    <h2>Vad jag har gjort</h2>
+    <h3>2024-03-26</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag importerade koden från det förra projektet som grund för detta. Alltså
+      en backend plus, index, login och register sidor.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag körde "npm init" samt lade in "crypto", "nodemailer", "discord.js" och
+      "@spotify/web-api-ts-sdk" som dependencies. Jag satte även upp en
+      transporter för att skicka mail. Slutligen lade jag till en app.post för
+      att skicka verifieringsmail.
+    </p>
+    <h3>2024-03-27</h3>
+    <p>
+      Här började jag sätta upp discord boten. Jag skapade en ny discord bot på
+      discord developer portal och lade in token i .env filen. Allt jag gjorde
+      var att sätta upp intents samt att få den att starta.
+    </p>
+    <h3>2024-03-28</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag skapade en funktion för att skaoa mailen. Dessutom lade jag till en
+      kolumn i databasen för om användaren är verifierad eller inte. Därefter
+      lade jag till att den skickar iväg ett verifieringsmail när användaren
+      skapar ett konto. Slutligen skrev jag om app.post för att verifiera till
+      en app.get som kollade om ens token är giltig och verifierar användaren.
+      Jag använde samma metod för att skapa en app.get för att ta bort ett
+      konto.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag lade till "fs" som dependency. Här började jag styla console.logs och
+      console.errors för att lättare kunna urskilja meddelanden. Här påbörjade
+      jag även funktionen att boten läser meddelanden som skickas.
+    </p>
+    <h3>2024-04-09</h3>
+    <p>
+      Här lade jag till "express-session" som dependency. Jag skapade ett objekt
+      för att lättare styla console.logs och console.errors. Här tog jag även
+      bort funktionen som skapade mailen och flyttade den rakt in i koden för
+      att lättare kunna anpassa den. Jag påbörjade en app.post för att logga ut.
+      Sedan påbörjade jag en app.post för att återställa lösenord. Dessutom tog
+      jag bort den kod som redan fanns i index-filen.
+    </p>
+    <h3>2024-04-11</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här lade jag till "undici" och "handlebars" som dependencies. Jag lade
+      till en regex för att förhindra att användare skickar in sql-injections.
+      Här lade jag även till en app.get för att länka ens konto till Discord med
+      hjälp av dess OAuth2. Här skapade och ändrade jag ett flertal hbs-filer.
+      Index lade jag till en nav för att navigera mellan sidorna. Jag skapade
+      även auth.hbs som för tillfället var tom. Dessutom skapade jag
+      discordAuth.hbs där jag lade till en länk till discord för att koppla sitt
+      konto på sidan till sin discord. Slutligen skapade jag script.js som
+      användes för att se om hbs-filen kunde nå externa filer. Här uppstod ett
+      problem som genomsyrade den tidiga delen av projektet. Jag kunde inte
+      hitta hur man länkade till externa filer i views-mappen oavsett hur mycket
+      jag letade.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Här lade jag till "jquery" som dependency till backenden. Här fortsätta
+      jag att ändra css styling för logs och errors genom att ge dem specifika
+      hex-färger. Att länka till discord flyttade jag från app.get till
+      app.post. Här tog jag även bort ovannämnda script.js. Till discordAuth.hbs
+      skrev jag i en script-tag script-kod för att skicka resultatet från
+      länkning till discord tillbaka till servern.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Här lade jag till "req.query" till app.get när alla sidor renderas för att
+      skicka relevant data till frontened. Jag lade även till en redirect på
+      discordAuth.hbs för att skicka användaren tillbaka till index efter att de
+      kopplat sitt konto.
+    </p>
+    <h3>2024-04-12</h3>
+    <p>
+      Här körde jag "npm update" för att uppdatera en dependency. Sedan
+      korrigerade jag discord.js intents för att få boten att fungera. Här
+      stötte jag på att discord.js's inbyggda funktion för att samla in alla
+      meddelanden bara samlade in de 100 senaste meddelanden. Därför skapade jag
+      en funktion som hämtade alla meddelanden i en specifik kanal. Sedan
+      påbörjade jag att hantera meddelanden som skickades till boten. För
+      tillfället var det bara citat och allt koden gjorde för tillfället var att
+      filtrera ut meddelanden som inte var citat. Dessutom påbörjade jag att den
+      skulle aktivt lyssna efter meddelanden som skickades i kanalen för citat.
+    </p>
+    <h3>2024-04-16</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag körde enbart "npm update --save" för att uppdatera package.json och
+      package-lock.json för att de skulle visa den uppdaterade versionen av
+      dependencies.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Här fortsätte jag att hantera citat. Jag påbörjade en regex för att ta ut
+      från meddelandet vem som blev citerad. Sedan påbörjade jag ett stycke kod
+      för att få fram hur många gånger varje individ har citerat någon annan.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Här fortsatte jag att hantera citat. Jag utvecklade regexen för att ta ut
+      den citerade personen. Här skrev jag resterande kod för att skapa ett
+      objekt med hur många gånger varje individ har blivit citerad.
+    </p>
+    <h4>Github Commit 4</h4>
+    <p>
+      Jag utökade regexen ännu mer. Dessutom skrev jag om koden för att ta fram
+      hur många gånger varje individ har blivit citerad.
+    </p>
+    <h3>2024-04-17</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här satte jag upp app.get som tog ut alla citat från databasen och
+      skickade dem till citat.hbs som jag också skapade. Här lade jag även till
+      koden som tog alla bearbetade citat och lade in dem i databasen. Detta
+      gjorde jag via att först ta ut alla citat som redan finns i databasen och
+      sedan jämföra dem med de som hämtades från discord. Därefter filtrerade
+      jag ut de som redan finns i databasen för att få ut dem som skrevs medan
+      boten var avstängd. Dessa lades sedan in i databasen. Dessutom uppdateade
+      jag index.hbs för att lägga till en länk till citat.hbs.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag tog bort en log som loggade alla insamlade citat. Dessutom fortsatte
+      jag och skrev databas-koden för att lägga in citat som skrevs medan boten
+      är igång.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Jag flyttade all citat-bearbetning om att framställa hur många gånger
+      varje person har blivit citerad eller citerat någon annan till när
+      citat.hbs renderas. Det är lättare att räkna ut det varje gång sidan
+      laddas än att förvara det i en databas.
+    </p>
+    <h3>2024-04-18</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här körde jag "npm update --save" för att uppdatera dependencies samt lade
+      till "escape-html", "parseurl" och "ws" som nya dependencies. Här
+      påbörjade jag användningen av "express-session" för att tillåta användare
+      att vara inloggade mellan sessioner och inte behöva logga in varje gång.
+      Jag satte även upp "ws" som en websocket för att skicka meddelanden till
+      användare. Jag kommenterade bort koden för att räkna ut hur många gånger
+      personer har blivit citerade eller citerat någon annan då jag ändå inte
+      skickade den till frontenden för tillfället. Jag lade till en app.get för
+      "*" som omdirigerade användaren till index om de försökte nå en sida som
+      inte fanns. Här ändrade jag även lite på prettier-konfigurationen för att
+      den ska använda ' istället för " vilket jag föredrar. Sedan med "ws" lade
+      jag till en funktion som skickade meddelanden till användare när ett nytt
+      citat har skrivits. Den fungerade inte för tillfället. Jag satte även
+      prettier som default code formatter i VS Code för att kunna autoformattera
+      hbs-filer så att de såg bättre ut. Detta ledde till ett problem med
+      script-elementet. Den brydde sig inte om semikolon som radbrytare och
+      därför blev koden väldigt kvadratisk samt svår att läsa och skriva. Detta
+      var inget jag kunde lösa för tillfället men motiverade mig att hitta hur
+      man har externa filer i views.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Här fixade jag problemet med att skicka ut meddelanden till websocketen.
+      Jag lade till ett script för varje sida som skapade en websocket med en
+      unik pageID. Därefter skickade jag meddelanden till alla websockets som
+      hade 'citat' som pageID. Slutligen löste jag problemet med
+      script-elementet och externa filer i views-mappen. Efter en slumpmässig
+      konversation med ChatGPT som jag inte trodde skulle hjälpa mig så fick jag
+      reda på att externa filer i views-mappen inte fungerar. De måste istället
+      ligga i en "public"-mapp. Detta löste problemet med att script-elementet
+      var oläsligt. Därför skapade jag en script-fil för varje hbs-fil och gav
+      dem en unik pageID samt flyttade över script-koden från hbs-filerna.
+      Slutligen kunde jag länka till externa filer i från hbs-filerna.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Varje gång boten startas lägger den till alla nya citat. Jag hade tänkt
+      att ha en log som visade hur många citat som lades till. Jag hade
+      felaktikgt skrivit den i for-loopen som lade till citaten. Därför flyttade
+      jag loggen till utanför loopen. I citat.hbs hade jag sedan tidigare en
+      funktion som bytte ut '\n' mot ett br-element. Jag effektiviserade den
+      genom att ta bort koden som kollade om citaten hade en '\n' och istället
+      använde replaceAll för att byta ut alla '\n' mot br-element. Jag
+      applicerade även detta på nya citat som skickades via websocketen. Jag
+      hade även sedan tidigare ett problem med att register-sidan inte fick en
+      pageID. Problemet var att det stod 'ws://localhost:8080/register' istället
+      för 'ws://localhost:8080?=register'. Jag fixade det problemet. Jag skrev
+      även om each-loopen i citat.hbs för att inte ha med vem som skrev ner
+      citatet och flyttade br-elementet utanför li-elementet.
+    </p>
+    <h3>2024-04-19</h3>
+    <p>
+      Jag skrev om funktionen som tar meddelanden från discord. Innan tog den
+      meddelanden från en specifik kanal. Jag ändrade så att kanal-id var en
+      parameter så att jag kunde använda funktionen för att hämta meddelanden
+      från alla kanaler. Här skrev jag kod som till stor del liknade koden för
+      att lägga in nya citat i databasen för att lägga in skärmbilder i en annan
+      databas. Samma sak gjorde jag för skärmbilder som skickades medan boten är
+      igång (Den läggs in i databasen och skickas till frontenden via
+      websocketen). Jag skapade även en css-fil som satte skärmbildernas bredd
+      till skärmens bredd för att de inte ska vara för stora då många är tagna
+      på en 3440x1440 skärm. Jag satte även upp en frontend websocket för att ta
+      emot nya skärmbilder och lägga in dem på sidan. Dessutom lade jag in en
+      länk på index för att komma till skärmbilder. Slutligen skapade jag även
+      screenshots.hbs som via en each-loop visar alla skärmbilder.
+    </p>
+    <h3>2024-04-23</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag körde "npm update --save" för att uppdatera dependencies. Det enda
+      andra jag gjorde var att ta bort en log som loggade ifall ett meddelande
+      skickades utanför citat-kanalen eller skärmbilds-kanalen (Ingen aning
+      varför jag haden den från början).
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>Jag körde "npm update --save" för att uppdatera dependencies.</p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Jag lade till felhantering för websocketen. Här upptäckte jag även ett
+      problem med skärmbildsdatabasen. Den lagrar discords url för
+      skärmbilderna. Vid detta tillfälle laddade inte den äldsta skärmbilden in.
+      Att ta bort den från databasen och lägga in den igen löste problemet.
+      Därför lade jag till att varje gång boten startas så tar den bort alla
+      skärmbilder från databasen och lägger in dem igen via en 'TRUNCATE TABLE'.
+      Detta betydde då att jag inte behövde filtrera ut skärmbilder som redan
+      fanns i databasen. Jag importerade även en reset.css-fil för att
+      standardisera sidornas css. Dessutom bytte jag i screenshots.css från att
+      bildernas width var 100% av skärmens bredd till att de var max 100% av
+      skärmens bredd för att förhindra att små bilder uppskalas. Jag skapade en
+      ny account.hbs samt dess script-fil och websocket. Jag öade även till att
+      alla andra sidor använder reset.css-filen.
+    </p>
+    <h3>2024-04-24</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag uppdaterade citerings-regexen samt började använda "express-session"
+      för lagra användares cookies när de loggar in. Jag lade även till lite
+      information på account.hbs som använde session för att visa användarens
+      användarnamn.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag kommenterade bort en log när en användare länkar sitt konto till sin
+      discord. Sedan påbörjade jag att skapa en funktion som kollar vad vi har
+      för aktiviteter på discord via en Events.activityUpdate.
+    </p>
+    <h3>2024-04-25</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag lade till activity i discord.js intents samt vad jag importerade från
+      den. Jag utökade även informationen jag skickar med renders från queries
+      till queries och session. Jag lade även till en app.get för 404 som
+      rendrar en 404.hbs som jag skapade (samt dess script-fil). Jag satte då
+      app.get för "*" till att redirecta till 404. Sedan lade jag även in i
+      sessionen ens discord-information när man länkar sitt konton till discord.
+      Under discord.js Events.ClientReady gav jag boten en custom aktivitet. Här
+      påbörjade jag även det som skulle bli en mardröm för mig. Jag påbörjade
+      hanteringen av aktvitetsuppdateringar. Jag kolllade om aktiviteten
+      påbörjade eller slutade och sedan tog ut allt från databasen och om
+      aktiviteten inte fanns i databasen så lades den in. Jag skapade även en
+      tom index.css fil samt tog bort reset.css då den ledde till fel för
+      bootstrap. I account.hbs utökade jag informationen den visade till ens
+      discord-användarnamn, discord-displayname och discord-avatar. Här
+      nedgraderade jag även bootstrap från 5.2.1 till 3.5.1. Dessutom påbörjade
+      jag en omskrivning av index.hbs för att visa mer detaljerad
+      kontoinformation som anpassades efter om man var inloggad eller inte. Här
+      tog jag även bort nav-baren. Slutligen skrev jag om head-elementet för att
+      vara mer strukturerad.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      I index.css lade jag till lite kod från reset.css (ingen margin eller
+      padding samt box-sizing: borders-box;). Dessutom lade jag till styling för
+      kontorutan jag skrev om i förra commiten. Jag lade även en bild för
+      användare som inte har länkat till discord. Här uppgraderade jag bootstrap
+      till 5.3.2. Jag skrev om headern på sidan för att använda
+      bootstrap-klasser som faktiskt fungerade. Kontorutan hade nu tre olika
+      designer beroende på om användaren var inloggad, länkad till discord eller
+      utloggad. Jag lade den rutan i en flex-container för att kunna flytta den
+      längst till höger. På grund av detta uppstod ett problem med att all yta
+      till vänster om rutan var tom och inte användes. Detta dröjde ett bra tag
+      innan jag fixade det.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Det enda jag gjorde var att försöka förstå vad aktivitetsuppdateringarna
+      gjorde. Jag kommenterade bort koden som lade till aktiviteter i databasen
+      och istället bara hade logs för oldActivity och newActivity.
+    </p>
+    <h3>2024-04-26</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag skapade ett objekt för att lagra aktiviteter medan boten är igång. Om
+      aktiviteten fanns i objektet tog jag skillnaden i tid mellan attributen
+      som gav när den började och "new Date().getTime()". Sedan plockade jag ut
+      från aktivitetsdatabasen om aktiviteten fanns. Om den fanns så adderade
+      jag skillnaden i tid till aktiviteten. Om den inte fanns så lade jag till
+      aktiviteten. Om en ny aktivitet inte finns i objektet så lade jag till den
+      och om aktiviteten var "Spotify" så lade jag till informationen om den
+      objektet.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag tog bort koden som lade till detaljer om Spotify-aktiviteter i
+      objektet. Istället hade jag en if-sats i koden som uppdaterar aktivitet
+      som gjorde samma sak för spotify-databasen. (Hämtade från databasen och
+      adderade skillnaden i tid till aktiviteten alternativt lade in en ny rad).
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Vid detta tillfälle skrev jag bara en rad kod men flyttade istället över
+      databasen till en seperat privat github-repo för att enklare kunna
+      synkronisera den mellan de två datorer jag jobbade på. Dessutom lade till
+      .env-filen i denna repo och därför var den enda ändringen filvägen till
+      .env-filen.
+    </p>
+    <h3>2024-04-27</h3>
+    <p>
+      Här skapade jag sidan (och dess script-fil för websocket) för att visa
+      statistiken om aktiviteter. Jag skapade en app.get för att från databasen
+      hämta alla aktiviteter och sedan sorterades de efter dess tid innan de
+      omformaterades från millisekunder till en sträng av timmar, minuter och
+      sekunder innan de renderades. Jag skrev igen om hanteringen av
+      aktivitetsuppdateringar. Jag tog bort objektet då jag insåg att all
+      information som behövdes fanns i oldActivities-objektet. Därför när en
+      aktivitet avslutades så lades den in aktivtetsdatabasen och om det var en
+      Spotify-aktivitet så lades den även in i Spotify-databasen. activiy.hbs
+      hade en each-loop som visade alla aktiviteter och dess tid samt lade jag
+      även in samma kontoruta som index.hbs. Här skapde jag även spotify.hbs men
+      den var för tillfället tom.
+    </p>
+    <h3>2024-05-07</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Denna commit var centreterad kring att fixa en del problem som hade
+      uppstått. För det första såg jag att aktivitetsdatabasen samt
+      Spotify-databasen ibland hade negativa värden för tiden. Jag kunde inte
+      riktigt ta reda på vad som orsakade det men jag antar att det var något
+      med att man avslutade aktiviteten väldigt kort efter att den började
+      (såsom att man snabbt bläddrade förbi låtar på Spotify). Därför lade jag
+      till en Math.max för att sätta tiden till 0 om den var negativ. Dessutom
+      ledde den seperata github-repon för databasen till att den ibland gav
+      errors angående tablespace. Därför lade jag till en 'ALTER TABLE ? IMPORT
+      TABLESPACE' för alla tabeller i databasen.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>Jag körde "npm update --save" för att uppdatera dependencies.</p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Här lade jag till kommenterar för alla requires som innehåll vilken licens
+      de har. Jag bytte även ut db.query för tablespace till `ALTER TABLE
+      ${table} IMPORT TABLESPACE` då den tidigare inte fungerade korrekt. Jag
+      tog även bort att sortera aktiviteter efter tid och istället lade till '
+      ORDER BY time DESC' i sql-queryn. Dessutom lade jag till en app.get för
+      spotify som tog ut alla spotify-aktiviteter och gjorde om millisekunderna
+      till en sträng av timmar, minuter och sekunder innan de renderades.
+      Dessutom skapade jag dess script-fil. I citat.hbs påbörjade jag även
+      systemet för att kunna rösta på dem. Jag lade till två knappar för att
+      rösta upp eller ner på citatet. Sedan i spotify.hbs lade jag till samma
+      kontoruta som index.hbs. Slutligen använde jag en each-loop för att visa
+      alla spotifylåtar, hur länge de har spelats samt vilka artister som har
+      skapat dem.
+    </p>
+    <h3>2024-05-08</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag körde "npm update --save" för att uppdatera dependencies. Jag lade i
+      backenden till db-queryn 'SHOW TABLES' för att se vilka tabeller som finns
+      och då inte behöva skriva in dem manuellt för att importera tablespace.
+      Dessutom började jag hantera röstningen på citat. Jag lade till en switch
+      case i ws för att hantera röstningen där upvotes alternativt downvotes
+      ökar med 1. Jag uppdaterade även så gott som alla hbs-filer för att ha
+      samma struktur på head-elementet samt uppdatera jquery och bootstrap. I
+      citat.js lade jag till en enkel if-statement som kollar om klassen på
+      knappen är 'upvote' eller 'downvote' och sedan skickar det till servern
+      tillsammans med citatets id.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag flyttade ett par app.get då de hade hamnat under app.get för '*' och
+      därför inte kunde nås.
+    </p>
+    <h3>2024-05-14</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Jag körde "npm update --save" för att uppdatera dependencies. Ett problem
+      som uppstod med session var att den bara lade in användarens discord
+      information när de länkade sitt konto till discord. Därför lade jag till
+      att den hämtade användarens discord-information från databasen när man
+      loggar in. Dessutom skrev jag färdigt db-queryn för att lägga in
+      discordkontoinformationen i sin egen tabell.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      I app.get för citat skickades jag även med query och session till rendern
+      för att det skulle vara som alla andra sidor. Jag ville även ha en
+      funktion som skrev hur många av de nya citaten som korrekt lades in i
+      databasen. Jag gjorde detta genom att incrementera en variabel varje gång
+      ett citat lades in i databasen. Jag lade även till en log som skrev ut hur
+      många citat som lades in. Detta ledde till ett problem med att den alltid
+      skrev ut '0 av x nya citat inlagda' då den loggade innan databasen som är
+      asynkron blev färdig. Det var här jag börjaet använda promises för att
+      vänta med att logga tills databasen var klar. I citat.hbs lade jag även
+      till ett gömt element för session för att kunna använda det i citat.js. I
+      citat.js påbörjade jag logiken för att skicka röstningar till servern
+      genom att först kolla om användaren var inloggad.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      I backenden insåg jag att den inte hanterade röstningar korrekt, just nu
+      kunde alla inloggade rösta hur mycket de ville på ett citat. Därför
+      påbörjade jag en lösning på det. Istället för att öka upvotes eller
+      downvotes skapade jag nu en ny tabell som bara håller reda på vilka
+      användare som har röstat på vilka citat. När en användare röstar på ett
+      citat så kollar den om användaren redan har röstat på citatet. Om den inte
+      har det så läggs röstningen in i databasen och upvotes eller downvotes
+      ökar med 1. Om användaren redan har röstat på citatet och rösten är samma
+      som den tidigare så tas röstningen bort och upvotes eller downvotes
+      minskar med 1. Om rösten är annorlunda så uppdateras röstningen och
+      upvotes eller downvotes ändras därefter. I databasen som håller reda på
+      röstningar lades även in en kolumn för att hålla reda på om rösten är en
+      upvote eller downvote som ändras om rösten inte är samma som tidigare. När
+      man laddar in citat.hbs tar jag fram vilka citat användaren har röstat på
+      med hjälp av session och skickar det till frontenden för att kunna visa
+      det grafiskt för användaren. Jag skrev även en ny app.get som skickar
+      användarens session så att frontend-script inte behöver använda ett gömt
+      element och istället kan få det direkt från servern. Det var här jag
+      började använda jquerys ajax för att hämta och skicka data med servern.
+    </p>
+    <h3>2024-05-15</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här flyttade jag över allt serverside som hanterade röstningar till en
+      app.post istället för via websocketen då ws inte kunde hantera sessions.
+      Därför bytte jag ut i citat.js från att skicka via ws till att använda
+      ajax för att skicka röstningar till servern. Att db.query är asynkron har
+      under hela projektet lett till problem då den har skickat ett svar till
+      klienten innan den var klar. Det var här jag började skriva om varenda
+      asynkron funktion till att använda await och promises för att vänta tills
+      den var färdig. Var det bara en enstaka funktion körde jag await new
+      Promise medan om det var flera så använde jag en array med promises och
+      Promise.all för att starta alla samtidigt och sedan vänta tills alla var
+      klara. En annan stor anledning till att jag skrev om allt var att
+      alternativet var att ha allt i nested callbacks vilket fungerar men är jag
+      föredrar att ha allt i en linjär struktur.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Här fortsatte jag omstruktureringen av asynkrona funktioner. Däremot
+      stötte jag på ett problem med att jag inte kunde använda await på vissa
+      platser då de var i en callback. Detta löste jag genom att skapa en async
+      funktion som returnerade en promise och använde den i stället för att
+      använda await.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Här hittade jag en lösning på specifika fall av att jag behövde använda en
+      asynkron funktion som returnerade en promise. Jag insåg att jag bara
+      behövde använda denna lösning om det var en callback. För min funktion
+      fetchAllMessages (samlar alla meddelande i en kanal) så använde jag
+      tidigare .then för att vänta på att den var klar. Jag skrev om den till
+      att använda await istället och kunde därför ta bort den async funktionen
+      som returnerade en promise och istället använda await på alla asynkrona
+      funktioner inuti. Här motarbetade jag tyvärr mig själv då jag tog bort
+      'await new Promise' från några asynkrona funktioner då jag ansåg att det
+      inte behövdes om de inte returnerade något då inget behövde vänta på något
+      returnerat värde.
+    </p>
+    <h3>2024-05-16</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här fixade jag ett litet fel med att en del variabler aldrig blev
+      deklarerade (const eller let) och därför blev de globala variabler. Det
+      fungerade men jag fixade det ändå. Jag fortsatte även omskrivningen till
+      await och promises. Tidigare hade jag skrivit många db.query om röster i
+      stilen 'UPDATE citat SET upvotes = upvotes + 1, downvotes = downvotes - 1
+      WHERE id = ?; SET type = ? WHERE userID = ? AND quoteID = ?' vilket mysql2
+      inte accepterar. Detta sker på grund av att mysql2 inte tillåter att köra
+      flera queries i samma db.query för att förhindra sql-injections. Därför
+      delade jag upp det i två db.query. I citat.hbs lade jag till två inline p
+      element för att visa hur många upvotes och downvotes ett citat har.
+      Dessutom påvörjade jag att skriva hanteringen av svaret från servern samt
+      korrigerade hur den väljer citatets id och effektiviserade hur den väljer
+      om det är en upvote eller downvote.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Vid detta tillfälle var det bara frontend-koden som jag arbetade med. I
+      citat.hbs hade li elementen tidigare bara innehållit själva citatet och
+      allt annat låg mellan li elementen. Jag flyttade då knapparna och p
+      elementen för upvotes och downvotes till att vara i samma li element som
+      citatet. Dessutom lade jag till en div för att låta användaren sortera
+      citaten efter datum eller röstning (upvotes - downvotes). Jag lade även
+      till popperjs som script för citat.hbs. Att lägga allt i samma li element
+      ledde till en del problem. Sedan tidigare hade jag en funktion som bytte
+      ut '\n' mot br-element i li element. Detta fungerade bra när det bara var
+      citat men nu när det var flera element i li elementet så blev det fel och
+      mycket renderades inte alls. Därför bytte jag den till att bara byta ut i
+      li elementets barn med klassen '.quote' vilket jag gav till ett nytt p
+      element som innehöll citatet. Dessutom lade jag i hanteringen för att
+      uppdatera värdena för upvotes och downvotes efter att användaren röstat.
+      Servern skickar tillbaka vad användaren tidigare har röstat på citatet.
+      För tillfället fungerade inte logiken för att uppdatera värdena. Slutligen
+      påbörjade jag skriptet för att hantera sorteringen av citaten. Den var
+      felaktigt implementerad och allt den gjorde var att ta bort alla citat.
+    </p>
+    <h3>2024-05-19</h3>
+    <p>
+      Här körde jag "npm update --save" för att uppdatera dependencies. Dessutom
+      kommenterade jag bort de requires som inte användes och körde "npm
+      uninstall" på dessa. Jag fortsatte även att skriva om till promises och
+      await. Jag gjorde även om Events.MessageCreat till en switch case istället
+      för if-sats då allt den gör är att kolla vilken kanal meddelandet
+      skickades i. I index.hbs lade jag till popperjs samt skrev om kontorutan
+      till att använda bootstrap-klassen 'float-end' för att flytta den längst
+      till höger på sidan medan utrymmet till vänster används. Dessutom lade jag
+      till länkar till alla andra sidor i projektet samt stylade dem med
+      bootstrap. index.css omstruktureade så att det fungerade med den nya
+      strukturen på kontorutan. I citat skrev jag om sorteringen av citat. Jag
+      bytte a elementen till button element och bytte scriptet till att köra när
+      alternativen trycks på och inte när dropdownen öppnas. Dessutom ändrade
+      jag så att texten på knappen ändras beroende på vad som är valt.
+    </p>
+    <h3>2024-05-21</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här skrev jag om hur spotify datan hanteras. Tidigare har artist varit en
+      kolumn i databasen men eftersom ett fåtal låtar har flera artister så
+      bryter detta mot normaliseringsregeln. Därför skapade jag en ny tabell för
+      att hantera artister samt en för att koppla ihop låtar med artister.
+      Däremot lade jag till en mainArtist kolumn i spotify-tabellen för att
+      separera olika låtar som har samma namn. Detta krävde mycket ny logik som
+      för tillfället inte fungerade korrekt.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag körde "npm update --save" för att uppdatera dependencies. Här löste
+      jag problemet med de sista asynkrona funktionerna som returnerade en
+      promise. Jag insåg att metoder såsom foreach och map kunda göras till
+      async. Detta ledde till att jag kunde använda await på alla asynkrona
+      funktioner. Jag försökte även fixa logiken med artister men kom ingen
+      vart.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Jag hade sedan tidigare bortkommenterat koden som räknade ut hur många
+      gånger varje person har blivit citerad eller citerat någon annan. Nu lade
+      jag tillbaka koden och skickade med den till frontenden. Dessutom
+      fortsatte jag skriva om asynkrona funktioner till await. Här importerade
+      jag även popperjs till de filer som inte redan hade det. Jag skrev även om
+      index.hbs för att ha bättre spacing mellan länkarna samt bytte ut länken
+      mot login-sidan till en button och ett gömt element som blev en popup när
+      man tryckte på knappen. I index.js gav jag popupen stylen 'display:
+      inline' och resten av sidan en brightness på 0.5 när man tryckte på
+      knappen. I index.css lade jag till styling för popupen så att den är mitt
+      på skärmen, ligger över allt annat och har en card design.
+    </p>
+    <h4>Github Commit 4</h4>
+    <p>
+      I index.hbs bytte jag ut länken till discord-login mot en länk som tar dig
+      direkt till discords hemsida då mellansteget var onödigt. Dessutom lägger
+      jag till en response på login popupen så att man kan se serverns svar. Jag
+      ändrade igen spacingen på länkarna i index.hbs. Jag flyttade även över all
+      kod (förrutom websocket) från index.js till login.js då jag hade tänkt att
+      de flesta sidorna skulle ha en liknande popup. Jag lade till ajax för att
+      skicka login-informationen till servern samt hantering av svaret från den.
+      Detta inkluderade att sätta bakgrundsfärgen på responsfältet beroende på
+      vilken typ av svar det var. Dessutom inkluderade det att uppdatera
+      kontorutan med antingen användarens discord-information eller en
+      kontoinformation beronde på om användaren hade länkat sitt konto. I
+      activity.hbs lade jag till en kontoruta samt designade listan av
+      aktiviteter med bootstrap-klasser för att likna den på citat.hbs. Jag
+      designade även om spotify.hbs till att ha två listor, en över låtar och en
+      över artister samt lade till en kontoruta och designade om listorna med
+      bootstrap-klasser för att likna citat.hbs och activity.hbs. Ett problem
+      som uppstod med detta var att jag ville skriva ut alla artister för
+      låtarna. Att bara skriva ut dem skulle inte se bra ut och jag ville hellre
+      ha ", " mellan varje artist och " och " mellan de två sista artisterna.
+      Eftersom hbs inte kan göra det var jag tvungen att göra dett via script.
+      Att bara lägga in listan innan scriptet omformatterade det skulle inte gå
+      och istället behöver jag ett sätt att seperera artisterna i texten innan
+      scriptet omformatterar det. För att hitta ett tecken som inte används av
+      artisterna så sökte jag upp spotifys guide angående artistnamn och hittade
+      att bland annat "†" inte användes. Därför är det en seperator mellan varje
+      artist innan scriptet omformatterar det. Scriptet tar sedan bort alla "†"
+      och ersätter dem med ", " förutom¨mellan de två sista som ersätts med "
+      och ". På grund av att jag lagt in login och discord-länkning i kontorutan
+      behövdes deras sidor inte längre så jag tog bort "login", "discordAuth"
+      och "auth" (som aldrig användes) samt deras respektive script-filer.
+    </p>
+    <h3>2024-05-22</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här tog jag bort de bortkommenterade requires som inte användes och jag
+      skrev om koden för att räkna ut hur många gånger varje person har blivit
+      citerad så att den faktiskt fungerade. Jag lade även till en ny css-fil
+      som skapade en unik scrollbar som användes på alla sidor. I citat.hbs
+      orsakade den tidigare filen att citaten blev på en lång rad istället för
+      att knapparna och p elementen hamnade på en ny rad. Därför omstrukturerade
+      jag citat.hbs och skrev om citat.js så att alla jquery-funktioner
+      refererar till rätt element. Dessutom påbörjade jag att den visar upp
+      vilka knappar som användaren har tryckt på. Detta sker genom att när sidan
+      laddas tas datan från en databas som frontendscriptet omformaterar till en
+      ett objekt med typen av röstning och citatets id.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag skrev om screenshots.hbs för att visa upp skärmbilderna i en lista som
+      liknar citat.hbs, activity.hbs och spotify.hbs. Jag lade även till samma
+      kontoruta och login-popup som på de andra sidorna. Jag hade tidigare råkat
+      ta bort den del av citat.hbs som hade sorteringsknappen och därför skrev
+      jag om den. Här skrev jag färdigt att den visar upp vilka knappar som
+      användaren har tryckt på. Både genom att de lyser upp när man trycker på
+      en knapp samt att rätt lyser upp när sidan laddas.
+    </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      Jag hade en del engelska på en del sidor och därför skrev jag om det till
+      svenska. Jag skrev även om register.hbs till att använda samma design som
+      resten av sidorna med ett card i mitten av sidan, en header och samma
+      mörka bakgrund. Jag skrev även klart account.hbs och 404.hbs för att också
+      använda samma design. I account.hbs lade jag till en knapp för att logga
+      logga ut. I register.js bytte jag till ajax för att skicka registrerings-
+      informationen till servern samt hantering av svaret från den. Slutligen
+      korrigerade jag också jquery-funktionerna så att de refererade till rätt
+      element.
+    </p>
+    <h4>Github Commit 4</h4>
+    <p>
+      I backenden tog jag bort gamla app.get för sidor som inte längre fanns
+      samt omstruktureade datan om hur många gånger varje person har blivit
+      citerad från att vara ett objekt till att vara en array av objekt.
+      Dessutom gjorde jag ännu fler asynkrona funktioner till att använda await
+      och promises. I register.js lade jag till att responsrutan skulle ändra
+      bakgrundsfärg beroende på vad för svar som kom från servern samt att
+      fixade jquery-funktionerna att referera till rätt element. I citat.hbs
+      lade jag till listor för vem som har citerat vem mest samt vem som har
+      blivit citerad mest. I citat.js flyttade jag mest runt koden men gjorde
+      även en ajax till await samt dår koden att lägga till (Du) på vem som har
+      citerat andra mest om du har länkat till discord och ditt användarnamn där
+      är detsamma som står i listan.
+    </p>
+    <h4>Github Commit 5</h4>
+    <p>
+      Hade missat att ge rubrik i citat.hbs för att visa upp vem som har citerat
+      vem mest. Jag lade till det.
+    </p>
+    <h4>Github Commit 6</h4>
+    <p>
+      Hade glömt att ta bort en gammal debug log i backenden som loggade om en
+      röstning inte hade korrekt information. Jag tog bort den.
+    </p>
+  </body>
+</html>
