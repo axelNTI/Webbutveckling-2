@@ -669,6 +669,13 @@
       Hade glömt att ta bort en gammal debug log i backenden som loggade om en
       röstning inte hade korrekt information. Jag tog bort den.
     </p>
+    <h3>2024-05-23</h3>
+    <p>
+      Jag tog bort en gammal reminder.txt fil om att köra "npm prune". Dessutom
+      lade jag till ett stycke text på register för att bättre följa GDPR.
+      Dessutom lade jag in en license.txt-fil för att lägga in de licenser som
+      krävde det. Dessa licenser lade jag även högst upp i backend.js.
+    </p>
     <h2>Planeringen</h2>
     <h3>Tidsplaneringen</h3>
     <p>
@@ -1165,7 +1172,81 @@
       möjligt att nå sidan eller datatrafiken till sidan från internet. Däremot
       använder projektet http och inte https vilket innebär att om hemsidan
       skulle ligga på en server som är ansluten till internet skulle det vara
-      enkelt att utföra 
+      enkelt att utföra man-in-the-middle-attacker. Om man bortser från dessa
+      två saker så är hemsidan i stor del. Jag använder följande format i mysql2
+      som helt förhindrar sql-injections:
+    </p>
+    <pre>
+      <code>
+        db.query(
+          'INSERT INTO screenshots SET ?',
+          {
+            url: attachment.url,
+            discordUsername: message.author.username,
+            messageID: message.id,
+          },
+          (err, result) => {
+            if (err) {
+              reject(err);
+            }
+            resolve();
+          }
+        );
+      </code>
+    </pre>
+    <p>
+      Denna metod använder "?" istället för att skapa en sträng med variablerna.
+      Detta förhindrar sql-injections då alla försök istället läggs in i
+      databasen istället för att köras som kod. Eftersom detta kräver att
+      mysql2s funktion fungerar som den ska så är det inte en garanti att det
+      fungerar. Därför har tagit extre försiktighet med en sql-injection-regex
+      för att neka alla inputs som innehåller något som liknar en sql-injection.
+      Dessutom har jag ganska stränga krav på användares lösenord för att se
+      till att de är säkra. Sedan använder jag även bcrypt för att hasha och
+      salta lösenorden så att även om databasen skulle bli hackad så skulle
+      lösenorden inte kunna användas på andra sidor. Dessutom ser jag till att
+      inte lita på något som klienter skickar till servern och refererar alltid
+      till databasen och session för att verifiera datan. Jag har även sett till
+      att alla packages jag använder är säkra. npm har själv inte hittat några
+      säkerhetsfel med de senaste versionerna av de packages jag använder.
+      Dessutom använder jag bara packages som borde vara säkra. Alla packages är
+      väldigt populära och de flesta har flera miljoner nedladdningar per vecka.
+      Det minsta har "bara" 200 000 nedladdningar per vecka. Detta innebär att
+      de borde vara säkra då de har blivit granskade av många andra.
+    </p>
+    <h2>Betyg</h2>
+    <p>Enligt skolverkets betygskriterier för Webbserverprogrammering 1:</p>
+    <blockquote>
+      Eleven beskriver utförligt och nyanserat tekniken bakom dynamiska
+      webbplatser och hur de samspelar med olika tekniker på webben.
+      <br />
+      <br />
+      Eleven gör en genomarbetad projektplan för en tänkt webbapplikation. Vid
+      behov reviderar eleven planen. I projektplanen beskriver eleven utförligt
+      och nyanserat applikationens funktion, arkitektur och mjukvarugränssnitt.
+      Utifrån projektplanen utvecklar eleven efter samråd med handledare
+      applikationen där presentations­logiken är skild från applikationens
+      övriga logik. I arbetet utvecklar eleven kod som följer en given
+      kodningsstandard och är utförligt kommenterad. Applikationen uppvisar
+      funktionalitet med ett språk för webbserver­programmering för att driva en
+      helt databaserad webbplats eller en jämförbart avancerad produkt och
+      tillhandahåller en lösning med viss komplexitet för permanent datalagring.
+      Produkten är av god kvalitet och följer etablerad god praxis. Detta
+      kontrollerar eleven med hjälp av flera tester, även manuella.
+      <br />
+      <br />
+      När arbetet är utfört gör eleven en noggrann och utförlig dokumentation av
+      de moment som har utförts samt utvärderar med nyanserade omdömen sitt
+      arbete och resultat samt ger förslag på hur arbetet kan förbättras. Eleven
+      identifierar flera sårbarheter eller hot och vidtar avancerade åtgärder
+      för att förhindra att produkten utnyttjas. När eleven kommunicerar med
+      andra använder hon eller han med säkerhet terminologi.
+    </blockquote>
+    <p>
+      Med detta i åtanke anser jag att jag förtjänar betyget A. Jag anser att
+      min projektplan var genomarbetad även om den hade en del brister. Jag
+      skulle även anse att koden är av god kvalitet och följer etablerad god
+      praxis.
     </p>
   </body>
 </html>
