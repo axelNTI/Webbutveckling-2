@@ -670,11 +670,22 @@
       röstning inte hade korrekt information. Jag tog bort den.
     </p>
     <h3>2024-05-23</h3>
+    <h4>Github Commit 1</h4>
     <p>
       Jag tog bort en gammal reminder.txt fil om att köra "npm prune". Dessutom
       lade jag till ett stycke text på register för att bättre följa GDPR.
       Dessutom lade jag in en license.txt-fil för att lägga in de licenser som
       krävde det. Dessa licenser lade jag även högst upp i backend.js.
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      För det första skrev jag kommentarer till all kod i projektet som behövde
+      det. Dessutom korrigerade jag en del småfel som hade uppstått under
+      projektet och ett från feedbacken jag hade fått. Det var en databas-query
+      som fortfarande inte använde promises och await så jag skrev om den.
+      Dessutom skrev jag om utloggningsfunktionen så att den faktiskt loggar ut
+      användaren genom att använda req.session.destroy. Jag hade tidigare
+      Slutligen tog jag bort en hel del debug logs som inte längre behövdes.
     </p>
     <h2>Planeringen</h2>
     <h3>Tidsplaneringen</h3>
@@ -1146,7 +1157,19 @@
       Här skapar jag en array av promises som jag sedan använder Promise.all på
       för att se till att alla promises är färdiga innan nästa bit kod körs.
       Detta gör samma sak som det första exemplet men tillåter alla asynkrona
-      funktioner att köras samtidigt.
+      funktioner att köras samtidigt. Utöver detta har jag använt jquery,
+      bootstrap och discord.js som större externa tekniker. Jag skulle anse att
+      alla dessa är relativt självförklarande. Bootstrap lägger till klasser för
+      att minska mängden css som behövs skrivas. Majoriteten av dessa klassers
+      namn beskriver tydligt vad de gör. Jquery är ett javascript-bibliotek som
+      gör det enklare att skriva javascript. Framförallt gör det det enklare att
+      hantera HTML-element. Discord.js är ett bibliotek för att skapa
+      discord-relaterade saker. Detta är det mest komplicerade av de tre men i
+      utbredden jag har använt det är det inte så komplicerat. Jag har bara
+      använt client.on event för att göra olika saker. Dessa events förklarar
+      sig själva rätt så bra. "client.on(Events.MessageCreate, (message) => {"
+      anser jag är tydligt att det är när ett meddelande skapas och att den ger
+      meddelandet som ett argument.
     </p>
     <h2>Källor</h2>
     <p>För projektet har jag använt flera olika språk och tekniker.</p>
@@ -1154,11 +1177,13 @@
       <li>
         <a
           href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
-          >Bootstrap</a
-        >
+          >Bootstrap
+        </a>
+        (Inget skrevs rakt av)
       </li>
       <li>
         <a href="https://discordjs.guide/#before-you-begin">discord.js</a>
+        (Inget skrevs rakt av)
       </li>
       <li>
         Utöver dessa har jag använt mig av Github Copilot och ChatGPT för att
