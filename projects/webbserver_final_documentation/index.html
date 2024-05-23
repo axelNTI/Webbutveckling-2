@@ -661,5 +661,109 @@
       Hade glömt att ta bort en gammal debug log i backenden som loggade om en
       röstning inte hade korrekt information. Jag tog bort den.
     </p>
+    <h2>Planeringen</h2>
+    <h3>Tidsplaneringen</h3>
+    <p>
+      Jag hade tänkt att jag skulle ha varit klar med projektet redan den
+      2024-05-03 vilket defininitivt var ambitiöst, kanske för ambitiöst.
+      Däremot anser jag att det finns en del anledningar som jag inte direkt
+      kunde förutse. För det första planerade jag att bli färdig med en stor del
+      av projektet under påsklovet. När jag skrev planeringen trodde jag att jag
+      skulle vara ledig alla dagar förutom en. Däremot blev det så att jag var
+      åtminstone delvis upptagen 7 av de 10 dagarna. Sedan blev jag också sjuk
+      senare under projektet vilket ledde till att jag både missade en lektion
+      samt att det var flera lediga dagar som jag inte orkade jobba på
+      projektet. Dessa två anledningar ledde till att projektet blev
+      tillräckligt försenat för att jag inte skulle hinna bli klar innan de
+      nationella proven och kursproven började. Detta tog bort ännu mer fritid
+      samt att jag överlag var tröttare. Därför tror jag att planeringen i
+      överlag var görbar förrutom arbetsbelastningen under lovet som jag inte
+      tror att jag hade orkat även om jag hade varit ledig de dagarna jag
+      trodde.
+    </p>
+    <h3>Modulplaneringen</h3>
+    <p></p>
+    <h4>Modul 1: Registrering av konto</h4>
+    <p>
+      Modul 1 var att skapa ett konto. Jag följde denna modul nästan helt och
+      lade till alla funktioner som var med i planeringen. Däremot hade jag även
+      skrivit att jag skulle återanvända koden från inloggningsprojektet vilket
+      jag inte gjorde. Jag skrev om både backend för att använda samma kodstil
+      som resten av projektet samt frontend för att visuellt se ut som resten av
+      sidorna.
+    </p>
+    <h4>Modul 2: Borttagning av konto</h4>
+    <p>
+      Denna modul var relativt simpel och jag implementerade den som planerat.
+      Användare kan radera sitt konto genom email verifiering.
+    </p>
+    <h4>Modul 3: Ändring av kontoinformation</h4>
+    <p>
+      Denna modul blev minskad i skala till att bara ändra lösenord. Detta
+      skedde på grund av en kombination anledningar. Först gjorde jag inte
+      färdigt den modulen när jag först gjorde den och jag återvände bara till
+      den nu mot slutet då jag hade varken tid eller energi för att göra hela
+      modulen.
+    </p>
+    <h4>Modul 4: Inloggning</h4>
+    <p>
+      Det enda jag planerade angående denna modul var att återanvända koden från
+      inloggningsprojektet. Jag gjorde inte det utan skrev om backend för att
+      passa in i resten av projektet samt frontend för att visuellt se ut som
+      resten av sidorna. Dessutom flyttade jag det från sin egen sida till att
+      vara en knapp + popup på majoriteten av sidorna.
+    </p>
+    <h4>Modul 5: Länkning av discord-konto till hemsida</h4>
+    <p>
+      Jag gjorde denna modul men den användes inte riktigt som jag hade tänkt.
+      Att länka med ens discord konto implementerades. Däremot hade jag tänkt
+      att det skulle ge vissa fördelar för de som är med på servern som detta
+      projekt är baserat på. Detta implementerades nästan inte alls då många av
+      de moduler som skulle ha använt detta inte implementerades. Den enda
+      användning av detta var att visa upp användarens discord-information i
+      kontorutan samt att skriva "(Du)" på listan om vem som citerat andra mest
+      på dig själv.
+    </p>
+    <h4>Modul 6: discord.js</h4>
+    <p>
+      Denna modul var enbart att konfigurera discord.js för att kunna användas i
+      andra moduler. Detta gjorde jag och discord.js används i majoriteten av
+      funktionerna på hemsidan.
+    </p>
+    <h4>Modul 7: Citat-statistik</h4>
+    <p>
+      Denna modul blev implementerad typ exakt som planerat. Som planerat samlar
+      jag in alla citat på servern och lagrar dem i en databas. Dessutom tar jag
+      dessa citat för att räkna ut hur många gånger varje person har blivit
+      citerad eller citerat någon annan. Det enda som inte blev implementerat
+      exakt som planerat var att visa upp detta på hemsidan. Jag hade tänkt att
+      visa upp de citat som var populärast på servern. Det blev aldrig en
+      funktion att rösta på citat på servern och istället hamnade detta på
+      hemsidan. Dessutom skulle den visa upp de populäraste citaten medan jag
+      även implementerade en sorteringsfunktion för att visa upp citaten
+      antingen efter datum eller popularitet. Planeringen tog inte heller upp
+      att en websocket skickar nya citat live till alla anslutna klienter.
+    </p>
+    <h4>Modul 8: Aktivitetsstatistik</h4>
+    <p>
+      Det jag skrev angående denna modul i min planering var "Denna modul kommer
+      att använda discord.js för att sammanställa statistik över medlemmarnas
+      aktivitet på servern. Detta kommer att sparas i en databas och sedan
+      sammanfattas för att visa upp vilka spel och applikationer som är
+      populärast på servern.". Detta gjorde jag nästan exakt som planerat. Det
+      planeringen inte tar upp var att det blev två seperata sidor för aktivitet
+      och spotify-aktivitet.
+    </p>
+    <h4>Modul 9: Bildgalleri</h4>
+    <p>
+      Detta följdes så gott som exakt. I planeringen står det "spara dem i en
+      databas" i referens till bilderna. Tekniskt gör jag inte detta utan sparar
+      istället en discord-länk till bilderna.
+    </p>
+    <h4>Modul 10: Kommentarer på bilderna</h4>
+    <p>
+      Denna modul implementerades inte alls. Det är en modul jag gärna hade
+      implementerat men på grund av tidsbrist blev den inte av.
+    </p>
   </body>
 </html>
