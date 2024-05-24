@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Dokumentation</title>
   </head>
   <body>
@@ -15,6 +16,8 @@
         >https://github.com/axelNTI/webbserver-final-project</a
       >.
     </p>
+    <h2>Demonstration</h2>
+    <iframe width="1700" height="712" src="https://www.youtube.com/embed/Pt6AG8moXCA"> </iframe>
     <h2>Vad jag har gjort</h2>
     <h3>2024-03-26</h3>
     <h4>Github Commit 1</h4>
@@ -687,6 +690,88 @@
       användaren genom att använda req.session.destroy. Jag hade tidigare
       Slutligen tog jag bort en hel del debug logs som inte längre behövdes.
     </p>
+    <h4>Github Commit 3</h4>
+    <p>
+      För det första fixade jag så att delete-sidan omdirigerar till kontosidan
+      om man inte har en giltig token med ett meddelande om att ett mail har
+      skickats. Dessutom flyttade jag logout-funktionen från app.post till
+      app.get och innan 404-redirectionen samt att den omdirigerar dig till
+      index efter att du har blivit utloggad. Jag fixade också frontend scriptet
+      för att ta bort kontot så att den kan visa meddelandet om att ett mail har
+      skickats. Jag hade glömt översätta en rad i login.js från engelska till
+      svenska så jag bytte ut "Account" mot "Konto". Dessutom skrev jag om
+      account.hbs för att visa upp meddelandet och så att allt såg acceptabelt
+      ut. Här fick jag lite problem med att meddelandet inte visades upp. Det
+      visade sig att jag inte hade bytit från index.js till account.js efter att
+      ha kopierat head-elementet från index.hbs. Slutligen fixade jag även en
+      rubrik till spotify.hbs och omstrukturerade lite kod för att det skulle se
+      bra ut.
+    </p>
+    <h4>Github Commit 4</h4>
+    <p>
+      Jag körde "npm update --save" för att uppdatera dependencies. Här fixade
+      jag en hel del problem som hade upptäckts under testningen. För det första
+      lades nya citat inte in på citat-sidan korrekt. Det nya citatet lades in i
+      alla tre listor och utan den stilen som de andra citaten hade. Detta
+      berodde på att citat.js inte hade uppdaterats sedan citat.hbs-sidan hade
+      omstrukturerats. Det var bara att lägga in så append-metoden syftade på en
+      specifik lista och sedan appendade lite extra html för att få samma stil
+      som resten. Ett annat problem med citat-sidan var att man inte kunde rösta
+      på citaten efter att listan hade sorterats. Detta uppsotd på grund av att
+      elementen temporärt togs bort från sidan och sedan lades till igen. Detta
+      ledde till att alla eventlisteners försvann. Det fixade jag genom att
+      skapa en funktion som återskapar dem och kallas efter att listan har
+      sorterats. Ett annat förslag från testningen var att göra kontorutan och
+      headern sticky (alltså att de följer med när användaren scrollar) samt att
+      lägga till en tillbaka-knapp på alla sidor (Jag använde det inte tidigare
+      då jag använde target="_blank" på alla länkar och då Ctrl+W för att ta mig
+      tillbaka). Därför lade jag till bootstrap-klasserna för sticky på
+      kontorutan och headern samt enn tillbaka-knapp i headern. Här uppstod ett
+      problem som jag inte löste på det lättaste sättet. För att kontorutan inte
+      skulle sitta lite under övre kanten behövdes "top: 10%;" som styling på
+      den men eftersom bootstrap bara har 0%, 50% och 100% samt att jag inte
+      ville skriva css för att fixa det "lärde" jag mig SCSS istället och
+      compilade det till css-klasser. Jag har ingen aning om hur det fungerar
+      men det gör det. Med detta kunde jag använda 10% på kontorutan. För att
+      detta skulle fungera importerade jag "sass" och satte upp ett custom
+      command som compilar scss till css. Jag förde över den nya designen på
+      headern och kontorutan till alla sidor. Det sista problemet jag löste var
+      att citat som hade skickats live inte kunde sorteras efter datum då det
+      inte hade något ID. Det var en simpel lösning då jag tog ut det från
+      databasen och skickade tillsammans med citaten till klienten via
+      websocketen.
+    </p>
+    <h4>Github Commit 5</h4>
+    <p>
+      Här visade det sig att jag hade glömt att lägga till den del av koden som
+      skulle skicka nya skärmbilder till klienten via websocketen. Detta löstes
+      med en loop som skickar url:en till alla klienter som är anslutna till
+      skärmbilds-sidan samt frontend-script som lade till det i listan. Ett
+      problem med kontorutan var att den var transparent så att texten på sidan
+      syntes igenom. Därför var jag tvungen att lägga till en bakgrund på den.
+      Här stötte jag på ett problem med att skärmbilderna tog upp mer än
+      hemsidan bredd. Först insåg jag att jag behövde omstrukturera css-filen då
+      den är beroende på HTML-layouten. Därefter fungerade det fortfarande inte
+      vilket jag till slut kom fram till berodde på att jag tagit bort
+      css-länken tidigare när jag kopierat in head-elmentet, headern eller
+      kontorutan.
+    </p>
+    <h3>2024-05-24</h3>
+    <h4>Github Commit 1</h4>
+    <p>
+      Här fixade jag lite problem som hade uppstått med valideringen.
+      Framförallt tog jag bort ett felaktigt p element från index.hbs,
+      activity.hbs, citat.hbs, screenshots.hbs och spotify.hbs. Dessutom gav jag
+      screenshots.hbs en alt attribut samt så att nya skärmbilder som läggs in
+      får en alt attribut via screenshots.js. Slutligen fixade jag 404.hbs så
+      att den hade korrekt titel och använde korrekt script (Ett fel från när
+      jag kopierade in head-elementet).
+    </p>
+    <h4>Github Commit 2</h4>
+    <p>
+      Jag hade tidigare glömt bort att lägga till användarens användarnamn och
+      eventuellt discordnamn. Fixade det och lite margin.
+    </p>
     <h2>Planeringen</h2>
     <h3>Tidsplaneringen</h3>
     <p>
@@ -834,10 +919,522 @@
       implementera.
     </p>
     <h2>Testning</h2>
-    <!-- Ska skriva detta senare -->
     <h3>Människor</h3>
+    <p>
+      Efter att hemsidan var färdig/så gott som färdig testade jag den. Under
+      denna process hittade jag och fixade följande fel:
+    </p>
+    <ul>
+      <li>
+        <h5>Ingen knapp tillbaka</h5>
+        <p>
+          När jag skapade projektet använde jag mig av target="_blank" på alla
+          sidor samt Ctrl+W för att ta mig tillbaka. Detta då jag alltid brukar
+          öppna länkar i nya flikar och sedan stänga dem när jag är klar för att
+          ta mig tillbaka. Detta var enkelt fixat genom att lägga till en länk
+          som tog en tillbaka till index i headern på alla sidor.
+        </p>
+      </li>
+      <li>
+        <h5>Titel på spotify</h5>
+        <p>
+          Jag fick feedback om att det inte fanns någon titel på spotify-sidan
+          vilket bara var en översikt från mig. Därför lade jag till "Spotify"
+          för hela sidan samt "Låtar" och "Artister" för de individuella
+          listorna.
+        </p>
+      </li>
+      <li>
+        <h5>Mer utrymme till låtarna och artisterna</h5>
+        <p>
+          Jag fick även feedbacken att listan över låtar på spotify-sidan var
+          för smal vilket var ett misstag då jag hade råkat satt "w-50" istället
+          för "w-100" på listorna.
+        </p>
+      </li>
+      <li>
+        <h5>Kontoruta och header som följer en när man scrollar</h5>
+        <p>
+          Jag fick feedbacken att kontorutan och headern skulle följa en när man
+          scrollar ner på hemsidan istället för att stanna där de är. Detta
+          tycker jag var en bra idé samt en förvånansvärt enkelt att
+          implementera. Det var bara att lägga till bootstrap-klasserna
+          "position-sticky" och ett "top"-värde.
+        </p>
+      </li>
+      <li>
+        <h5>Account</h5>
+        <p>
+          Jag hade missat att översätta "Account" till "Konto" på ett ställe i
+          koden vilket gjorde att det ibland stod på engelska. Det enda svåra
+          med lösningen var att hitta vart felet var.
+        </p>
+      </li>
+      <li>
+        <h5>Avlänka discord</h5>
+        <p>
+          Detta var den enda feedbacken som jag inte gjorde. Det hade inte varit
+          en svår implementering men om jag ska vara ärlig missade jag helt
+          enkelt att det stod i listan över feedback.
+        </p>
+      </li>
+      <li>
+        <h5>Ta bort konto</h5>
+        <p>
+          Jag hade glömt att lägga till knappen som tar en till sidan för att ta
+          bort sitt konto. Det var en relativt enkel lösning då jag även behövde
+          fixa lite logik angående det då länken inte skulle ge den token som
+          behövdes.
+        </p>
+      </li>
+      <li>
+        <h5>Logga ut ska fungera</h5>
+        <p>
+          Under testningen visade sig att logga ut inte fungerade. Om man
+          försökte skickades men enbart till 404-sidan. Detta löstes genom att
+          först flytta funktionen från app.post till app.get och sedan innan 404
+          redirectionen.
+        </p>
+      </li>
+      <li>
+        <h5>Röstningsknapparna ska fungera</h5>
+        <p>
+          Efter att ha sorterat citaten slutade röstningsknapparna att fungera.
+          Detta var ett problem som förvirrade mig ett tag innan jag sökte upp
+          det och lärde mig att de nya li-elementen som skapas aldrig får samma
+          event listeners som de gamla. Detta löstes genom att skapa en funktion
+          som återskapar dem och kallas efter att listan har sorterats.
+        </p>
+      </li>
+      <li>
+        <h5>Spacing för vissa rader</h5>
+        <p>
+          På spotify.hbs-sidan var mellanrummet mellan text och hr-raden över
+          och under inte lika stor på listorna över vem som har citerat vem mest
+          och vem som har blivit citerad mest. Detta var enkelt fixat genom att
+          ge dessa p element bootstrap-klasser om vertikal margin.
+        </p>
+      </li>
+    </ul>
     <h3>Hårdvara och mjukvara</h3>
-    <h3>Valedering</h3>
+    <p>Jag har testat hemsidan i följande webbläsare:</p>
+    <ul>
+      <li>
+        <h5>Google Chrome</h5>
+        <p>
+          Under projektets gång har hemsidan alltid körts i Google Chrome och är
+          därför helt anpassad efter det.
+        </p>
+      </li>
+      <li>
+        <h5>Microsoft Edge</h5>
+        <p>
+          Jag har testat hemsidan i Microsoft Edge och den fungerar lika bra som
+          i Google Chrome.
+        </p>
+      </li>
+      <li>
+        <h5>Mozilla Firefox</h5>
+        <p>
+          Mozilla Firefox har tyvärr inte komplett stöd för alla funktioner i
+          bootstrap och därför ser hemsidan inte lika bra ut som i de andra.
+          Däremot är det bara bakgrunden som påverkas vilket inte är en stor del
+          av hemsidan.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Jag hade väldigt gärna testat hemsidan på fler webbläsare såsom Safari men
+      eftersom hemsidan körs på localhost är det inte möjligt att testa via den
+      då externa enheter inte har tillgång till den.
+    </p>
+    <p>Jag har testat hemsidan på följande skärmstorlekar:</p>
+    <ul>
+      <li>1920x1080 (16:9) (Landscape)</li>
+      <li>1080x1920 (9:16) (Portrait)</li>
+      <li>3440x1440 (21.5:9) (Landscape)</li>
+    </ul>
+    <p>
+      Alla dessa tre skärmstorlekar fungerade för det mestadels bra. Under
+      hemsidans utveckling har skärmstorleken 1920x1080 samt 3440x1440 använts
+      vilket betyder att dessa upplösningar är de som är mest testade. 1080x1920
+      var den enda som jag inte hade testat innan jag skrev detta dokument och
+      den hade vissa problem. På spotify.hbs är det relativt mycket text bredvid
+      varandra vilket gör att det blir aningen trångt på en så smal skärm. Detta
+      var inte ett stort problem men en sak som definitivt skulle kunna
+      förbättras.
+    </p>
+    <p>
+      Utöver dessa punkter testade jag även Google Chrome's Developer Tools för
+      throttling. Jag körde det på "Low-end mobile" och hemsidan laddade ändå in
+      på en acceptabel mängd tid i de flesta fall. Den enda hemsidan som tog (i
+      min åsikt) för lång tid att ladda var screenshots.hbs då den behöver ladda
+      in ett par dussin bilder. Detta är definitivt ett område som skulle kunna
+      förbättras genom att enbart ladda in bilderna som syns på skärmen samt att
+      ladda in resten när användaren scrollar.
+    </p>
+    <h3>Validering</h3>
+    <p>
+      Då hemsidan inte ligger uppe på nätet samt att filerna är skrivna i
+      handlebars så har det varit svårare att validera hemsidan. Därför har jag
+      öppnat alla sidor och laddat ner dem för att ladda upp dem
+      valideringssidan. Här är resultaten:
+    </p>
+    <ul>
+      <li>
+        <h5>index.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element p not allowed as child of element button in this
+              context.
+            </p>
+            <p>
+              Jag tog bort p-elementet och flyttades dess text till att ligga
+              direkt i knappen. Detta var en enkel lösning som inte påverkade
+              sidan negativt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+          <li>
+            <p>Warning: The main role is unnecessary for element main.</p>
+            <p>
+              Eftersom detta bara är en varning och "onödigt" och inte
+              "felaktigt" valde jag att inte göra någonting åt det då jag inte
+              vet om det kan leda till problem med bootstrap då jag tror att jag
+              ursprungligen hade lagt till det för att lägga till någon
+              bootstrap-funktion.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>activity.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element p not allowed as child of element button in this
+              context.
+            </p>
+            <p>
+              Jag tog bort p-elementet och flyttades dess text till att ligga
+              direkt i knappen. Detta var en enkel lösning som inte påverkade
+              sidan negativt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element hr not allowed as child of element ul in this
+              context.
+            </p>
+            <p>
+              Då detta inte ledde till några problem samt är en viktig del av
+              hur hemsidan ser ut valde jag att inte göra någonting åt det.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>citat.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element p not allowed as child of element button in this
+              context.
+            </p>
+            <p>
+              Jag tog bort p-elementet och flyttades dess text till att ligga
+              direkt i knappen. Detta var en enkel lösning som inte påverkade
+              sidan negativt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element hr not allowed as child of element ul in this
+              context.
+            </p>
+            <p>
+              Då detta inte ledde till några problem samt är en viktig del av
+              hur hemsidan ser ut valde jag att inte göra någonting åt det.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>spotify.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element p not allowed as child of element button in this
+              context.
+            </p>
+            <p>
+              Jag tog bort p-elementet och flyttades dess text till att ligga
+              direkt i knappen. Detta var en enkel lösning som inte påverkade
+              sidan negativt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element hr not allowed as child of element ul in this
+              context.
+            </p>
+            <p>
+              Då detta inte ledde till några problem samt är en viktig del av
+              hur hemsidan ser ut valde jag att inte göra någonting åt det.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>screenshots.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element p not allowed as child of element button in this
+              context.
+            </p>
+            <p>
+              Jag tog bort p-elementet och flyttades dess text till att ligga
+              direkt i knappen. Detta var en enkel lösning som inte påverkade
+              sidan negativt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Element hr not allowed as child of element ul in this
+              context.
+            </p>
+            <p>
+              Då detta inte ledde till några problem samt är en viktig del av
+              hur hemsidan ser ut valde jag att inte göra någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: An img element must have an alt attribute, except under
+              certain conditions. For details, consult guidance on providing
+              text alternatives for images.
+            </p>
+            <p>
+              Då bilderna är automatiskt inlagda från skärmilder skickade i en
+              kanal är det svårt att ge dem en alt-text. Däremot gav jag dem en
+              alt-text som är "Skärmbild från Minecraft" då det är det som de
+              är.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>register.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Error: Bad value ./Registrera konto_files/bootstrap.min.css for
+              attribute href on element link: Illegal character in path segment:
+              space is not allowed.
+            </p>
+            <p>
+              Jag sökte efter detta fel och det är ett problem som inte borde
+              uppstå. Varken i register.hbs eller i Google Chrome's Developer
+              Tools för sidan finns det någon länk som heter "Registrera
+              konto_files" vilket får mig att tro att detta skapas enbart när
+              man laddar ner filen. Därför valde jag att inte göra någonting åt
+              det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>account.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+          <li>
+            <p>
+              Warning: Section lacks heading. Consider using h2-h6 elements to
+              add identifying headings to all sections, or else use a div
+              element instead for any cases where no heading is needed.
+            </p>
+            <p>
+              Jag föredrar att använda semantic html och därför valde jag att
+              använda section istället för div. Jag valde att inte lägga till
+              någon rubrik då det inte är nödvändigt.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h5>404.hbs</h5>
+        <ul>
+          <li>
+            <p>
+              Error: Start tag seen without seeing a doctype first. Expected <
+              !DOCTYPE html >.
+            </p>
+            <p>
+              Jag felsökte detta fel och det visade sig att prettier code
+              formatter automatiskt tar bort dem. På grund av detta kombinerat
+              med att det inte leder till några problem valde jag att inte göra
+              någonting åt det.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <h2>Upphovsrätt och GDPR</h2>
     <h3>Upphovsrätt</h3>
     <p>
@@ -1015,7 +1612,7 @@
     <h3>GDPR</h3>
     <p>Artikel 5 i GDPR säger följande:</p>
     <blockquote>
-      Article 5
+      Art. 5 GDPR
       <br />
       <br />
       Principles relating to processing of personal data
@@ -1081,7 +1678,129 @@
       fungera.
     </p>
     <p>Artikel 6 i GDPR säger följande:</p>
-    <blockquote></blockquote>
+    <blockquote>
+      Art. 6 GDPR
+      <br />
+      <br />
+      Lawfulness of processing
+      <br />
+      <br />
+      <ol>
+        <li>
+          Processing shall be lawful only if and to the extent that at least one
+          of the following applies:
+          <ol type="a">
+            <li>
+              the data subject has given consent to the processing of his or her
+              personal data for one or more specific purposes;
+            </li>
+            <li>
+              processing is necessary for the performance of a contract to which
+              the data subject is party or in order to take steps at the request
+              of the data subject prior to entering into a contract;
+            </li>
+            <li>
+              processing is necessary for compliance with a legal obligation to
+              which the controller is subject;
+            </li>
+            <li>
+              processing is necessary in order to protect the vital interests of
+              the data subject or of another natural person;
+            </li>
+            <li>
+              processing is necessary for the performance of a task carried out
+              in the public interest or in the exercise of official authority
+              vested in the controller;
+            </li>
+            <li>
+              processing is necessary for the purposes of the legitimate
+              interests pursued by the controller or by a third party, except
+              where such interests are overridden by the interests or
+              fundamental rights and freedoms of the data subject which require
+              protection of personal data, in particular where the data subject
+              is a child.
+            </li>
+          </ol>
+          Point (f) of the first subparagraph shall not apply to processing
+          carried out by public authorities in the performance of their tasks.
+        </li>
+        <li>
+          Member States may maintain or introduce more specific provisions to
+          adapt the application of the rules of this Regulation with regard to
+          processing for compliance with points (c) and (e) of paragraph 1 by
+          determining more precisely specific requirements for the processing
+          and other measures to ensure lawful and fair processing including for
+          other specific processing situations as provided for in Chapter IX.
+        </li>
+        <li>
+          The basis for the processing referred to in point (c) and (e) of
+          paragraph 1 shall be laid down by:
+          <ol type="a">
+            <li>Union law; or</li>
+            <li>Member State law to which the controller is subject.</li>
+          </ol>
+        </li>
+        <li>
+          The purpose of the processing shall be determined in that legal basis
+          or, as regards the processing referred to in point (e) of paragraph 1,
+          shall be necessary for the performance of a task carried out in the
+          public interest or in the exercise of official authority vested in the
+          controller. That legal basis may contain specific provisions to adapt
+          the application of rules of this Regulation, inter alia: the general
+          conditions governing the lawfulness of processing by the controller;
+          the types of data which are subject to the processing; the data
+          subjects concerned; the entities to, and the purposes for which, the
+          personal data may be disclosed; the purpose limitation; storage
+          periods; and processing operations and processing procedures,
+          including measures to ensure lawful and fair processing such as those
+          for other specific processing situations as provided for in Chapter
+          IX. The Union or the Member State law shall meet an objective of
+          public interest and be proportionate to the legitimate aim pursued.
+        </li>
+        <li>
+          Where the processing for a purpose other than that for which the
+          personal data have been collected is not based on the data subject’s
+          consent or on a Union or Member State law which constitutes a
+          necessary and proportionate measure in a democratic society to
+          safeguard the objectives referred to in Article 23(1), the controller
+          shall, in order to ascertain whether processing for another purpose is
+          compatible with the purpose for which the personal data are initially
+          collected, take into account, inter alia:
+          <ol type="a">
+            <li>
+              any link between the purposes for which the personal data have
+              been collected and the purposes of the intended further
+              processing;
+            </li>
+            <li>
+              the context in which the personal data have been collected, in
+              particular regarding the relationship between data subjects and
+              the controller;
+            </li>
+            <li>
+              the nature of the personal data, in particular whether special
+              categories of personal data are processed, pursuant to Article 9,
+              or whether personal data related to criminal convictions and
+              offences are processed, pursuant to Article 10;
+            </li>
+            <li>
+              the possible consequences of the intended further processing for
+              data subjects;
+            </li>
+            <li>
+              the existence of appropriate safeguards, which may include
+              encryption or pseudonymisation.
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </blockquote>
+    <p>
+      Med detta i åtanke anser jag att jag har följt artikel 6 av GDPR.
+      Användare ger sitt samtycke till att jag samlar in relevant data för att
+      hemsidan ska fungera när de skapar ett konto. Jag samlar inte in någon
+      data som inte är nödvändig för att hemsidan ska fungera.
+    </p>
     <h2>Koden</h2>
     <p>
       Koden för detta projekt finns på github:
